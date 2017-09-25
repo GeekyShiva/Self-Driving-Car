@@ -2,14 +2,14 @@
 
 ## 1.1 Purpose
 
-The purpose of this document is to provide a debriefed view of requirements and specifications of the project called "_Volante_".
+The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
 Goal of this project is to make an autonomous self-driving car, capable of maneuvering around bends, avoid obstacles and follow traffic signals and road signs.
 
 The tools used in this project and described in this document are:
 
 * TensorFlow library for machine learning
-* OpenCV for computer vision
+* Vision API by Google Cloud Platform and Tensor Flow.
 
 The hardware used in this project and described in this document are:
 
@@ -49,6 +49,8 @@ Recent developments in machine learning and artificial intelligence, along with 
 * Reduced expenditure: Reduction in accidents will directly lead to reduced expenditure on damages.
 * Environment friendly: Efficient driving styles of the self driving car will lead to lower emissions.
 * Solution to Parking Problem: Most of the modern cities face parking problems and which can be resolved by this solution.
+* Speed Limits: Better Law enforcement can be achieved and traffic can be manged by capping via speed in various regions.
+* Potential For New Design: Because a vehicle may eventually function as a sort of self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained
 
 ## 1.6 Terminology
 
