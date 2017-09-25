@@ -25,6 +25,17 @@ The hardware used in this project and described in this document are:
 * TBD means "To be Decided", these are the components that are not yet decided
 * For more references see Terminology
 
+## 1.3 Intended Audience and Reading Suggestions
+
+Anyone with some programming experience, with familiarity in Python and C can understand this document. The document is intended for developers, software architects, testers, project managers and documentation writers.
+
+This Software Requirement Specification also includes:
+
+* Overall description of the product
+* External interface requirements
+* System Features
+* Other non functional requirements
+
 ## 1.6 Terminology
 
 | Term | Description |
