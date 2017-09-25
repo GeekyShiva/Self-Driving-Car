@@ -21,8 +21,8 @@ The hardware used in this project and described in this document are:
 
 ## 1.2 Document Conventions
 
-* All terms are in italics style.
-* Main features or important terms are in *bold* style.
+* All terms are in _italics_ style.
+* Main features or important terms are in *bold*.
 * TBD means "To be Decided", these are the components that are not yet decided
 * For more references see Terminology
 
@@ -39,15 +39,16 @@ This Software Requirement Specification also includes:
 
 ## 1.4 Product Scope
 
-Road safety has been an issue for as long as cars have been in existence. Over 1 lakh people die of road accidents every year in India alone, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people’s productivity, but also on the environment.
+Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on peopleâ€™s productivity, but also on the environment.
 
 Recent developments in machine learning and artificial intelligence, along with the ever increasing performance of modern day computers has enabled the use of these technologies in developing self-driving cars. These cars have several advantages, as described below:
 
 * Better road safety: Machines are not prone to human-error and distractions, leading to swift and appropriate responses in real-time road conditions.
-* Reduced commute time: With cars communicating with each other and using modern GPS systems, commute times can be greatly reduced.
+* Reduced commute time: With cars communicating with each other and using modern GPS systems, commute times can be greatly reduced as self driving cars reduce the *"phantom effect"* in modern day traffic.
 * Increased productivity: Reduced commute times mean more time can be spent on what matters more.
 * Reduced expenditure: Reduction in accidents will directly lead to reduced expenditure on damages.
 * Environment friendly: Efficient driving styles of the self driving car will lead to lower emissions.
+* Solution to Parking Problem: Most of the modern cities face parking problems and which can be resolved by this solution.
 
 ## 1.6 Terminology
 
