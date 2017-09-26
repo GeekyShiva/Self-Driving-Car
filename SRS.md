@@ -96,3 +96,38 @@ The **Machine Learning Model** guides the car in the environment based on the da
 1. **Working Professionals:** They shall be able to better utilize their time, leading to increased productivity.
 2. **Elderly and Differently Abled:** Elderly or differently abled users will benefit as it would eliminate their dependence on a hired driver, greatly simplify their mobility.
 3. **Others:** No reliance on drivers, reduced commute costs and times shall benefit the population in general.
+
+## 2.4 Operating Environment
+
+An embedded system with the following minimum specifications:
+
+* Operating System: Linux distribution
+* Processor: 1.2 GHz ARM processor
+* Network: 802.11n Wireless LAN
+* Memory: 1GB or more
+* GPIO Interface
+* Ability to interface with a camera
+* Ability to interface with a distance sensor
+* Ability to generate PWM signals
+
+**Additional Requirements:** A cloud server able to host a TensorFlow application.
+
+To satisfy the above requirements, we have divided the system into to MCUs, an Arduino Uno and a Raspberry Pi.
+
+## 2.5 Design and Implementation Constraints
+
+* Heavy processing power for running neural networks for classification, thus necessitating the use of a cloud platform.
+* Stable and fast internet connection, as a slow connection can cause a delay in the car’s response to its environment.
+* Huge data set so that the car can adapt to its environment.
+
+## 2.6 Assumption and Dependencies
+
+### 2.6.1 Assumptions
+
+* The basic assumption is that the roads are ideal with no environmental variations like potholes, rash drivers, elevation changes, changing weather conditions etc.
+* All traffic signals are clearly visible and not malfunctioning.
+
+### 2.6.2 Dependencies
+
+* Tensorflow
+* Cloud ML
