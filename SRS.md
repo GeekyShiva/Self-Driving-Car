@@ -52,7 +52,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 * Speed Limits: Better Law enforcement can be achieved and traffic can be manged by capping via speed in various regions.
 * Potential For New Design: Because a vehicle may eventually function as a sort of self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained
 
-## 1.6 Terminology
+## 1.5 Terminology
 
 | Term | Description |
 | --- | --- |
