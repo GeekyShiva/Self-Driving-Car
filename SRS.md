@@ -63,3 +63,36 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Store | This is the persistence layer of whole system. |
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
+
+# 2 Overall Description
+
+## 2.1 Product Perspective
+
+This system consists of following components:
+
+* RC Car, it is analogous to real world car and tries to mimic it
+* Machine Learning Model, it makes decisions as to how the car should move
+* Arduino and Raspberry Pi, they control the car’s underlying hardware
+* PiCam, it collects visual data
+* Ultrasonic Sensor (HC - SR04), it collects distance data
+
+**RC Car** acts as an analog to the real world car with basic motion capabilities. It is battery operated.
+
+The **Machine Learning Model** guides the car in the environment based on the data set on which it is trained. The model uses neural networks as the underlying learning framework.
+
+**Arduino Uno** controls the actual car’s hardware. It runs the car’s motors, and collects distance from the HC-SR04 ultrasonic sensor. This data is then sent to the Raspberry Pi for processing.
+
+**Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
+
+## 2.2 Product Functions
+
+* Autonomous motion
+* Obstacle avoidance
+* Follows traffic signals
+* Follows traffic signs
+
+## 2.3 User Classes and Characteristics
+
+1. **Working Professionals:** They shall be able to better utilize their time, leading to increased productivity.
+2. **Elderly and Differently Abled:** Elderly or differently abled users will benefit as it would eliminate their dependence on a hired driver, greatly simplify their mobility.
+3. **Others:** No reliance on drivers, reduced commute costs and times shall benefit the population in general.
