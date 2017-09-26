@@ -143,3 +143,40 @@ To satisfy the above requirements, we have divided the system into to MCUs, an A
 
 * Tensorflow
 * Cloud ML
+
+# 3. External Interface Requirements
+
+## 3.1 User Interfaces
+
+Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer like system, like those found in modern day cars.
+
+The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them, however, are beyond the scope of this project.
+
+## 3.2 Hardware Interfaces
+
+* The deep neural network, running on the Google Cloud Platform, will communicate with the car using a Raspberry Pi 3. The embedded software in Raspberry Pi will itself communicate with the car using an Arduino Uno. The Arduino Uno will run the car by generating PWM signals sent to an L293D IC to run the motors.
+
+* The Raspberry Pi Camera Module connects onto the Raspberry Pi via a non-standard parallel interface.
+
+* The ultrasonic distance sensor on the Arduino Uno communicates with Arduino using a regular GPIO interface.
+
+## 3.3 Software Interfaces
+
+* The embedded software system on the Raspberry Pi has the following interfaces:
+
+    1. Camera input using a built-in library in Raspbian OS
+    2. Speed and turn data output to the Arduino using RPi.GPIO library
+    3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
+
+* The embedded software system on the Arduino Uno has the following interfaces:
+
+    1. Direction and speed data input using built-in Arduino libraries
+    2. PWM output to motors using built-in Arduino libraries
+
+## 3.4 Communication Interfaces
+
+* The Raspberry Pi will communicate with the Google Cloud Platform over Wifi (IEEE Standard 802.11), using an HTTPS protocol.
+
+* The communication interface between Raspberry Pi and Arduino Uno is a non-standard GPIO interface.
+
+* The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
