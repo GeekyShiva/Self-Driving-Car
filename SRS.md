@@ -75,7 +75,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Store | This is the persistence layer of whole system. |
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
-
+| GCP | Gooogle Cloud Platform for running the machine learning algorithm |
 # 2 Overall Description
 
 ## 2.1 Product Perspective
