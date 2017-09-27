@@ -96,6 +96,10 @@ The **Machine Learning Model** guides the car in the environment based on the da
 
 **Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
 
+### Component Diagram
+
+![al](https://github.com/GeekyShiva/FordMotors-SelfDrivingCar/blob/master/Images/model.jpg)
+
 ## 2.2 Product Functions
 
 * Autonomous motion
