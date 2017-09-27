@@ -1,3 +1,10 @@
+﻿ <div align=center>
+   <h1>Software Requirements Specification</h1>
+   <h2>Project Volantè</h2>
+   <b> Self Driving Car </b><br />
+   <b> Version <i>1.0</i></b>
+</div><br /><br />
+
 # 1. Introduction
 
 ## 1.1 Purpose
@@ -52,7 +59,12 @@ Recent developments in machine learning and artificial intelligence, along with 
 * Speed Limits: Better Law enforcement can be achieved and traffic can be manged by capping via speed in various regions.
 * Potential For New Design: Because a vehicle may eventually function as a sort of self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained
 
-## 1.5 Terminology
+## 1.5 References
+
+* This document is written in GitBub flavored Markdown.
+* IEEE Standard 830-1998 Recommended Practice for Software Requirements Specifications.
+
+## 1.6 Terminology
 
 | Term | Description |
 | --- | --- |
@@ -63,7 +75,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Store | This is the persistence layer of whole system. |
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
-
+| GCP | Gooogle Cloud Platform for running the machine learning algorithm |
 # 2 Overall Description
 
 ## 2.1 Product Perspective
@@ -131,3 +143,95 @@ To satisfy the above requirements, we have divided the system into to MCUs, an A
 
 * Tensorflow
 * Cloud ML
+
+# 3. External Interface Requirements
+
+## 3.1 User Interfaces
+
+Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer like system, like those found in modern day cars.
+
+The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them, however, are beyond the scope of this project.
+
+## 3.2 Hardware Interfaces
+
+* The deep neural network, running on the Google Cloud Platform, will communicate with the car using a Raspberry Pi 3. The embedded software in Raspberry Pi will itself communicate with the car using an Arduino Uno. The Arduino Uno will run the car by generating PWM signals sent to an L293D IC to run the motors.
+
+* The Raspberry Pi Camera Module connects onto the Raspberry Pi via a non-standard parallel interface.
+
+* The ultrasonic distance sensor communicates with Arduino using a regular GPIO interface.
+
+## 3.3 Software Interfaces
+
+* The embedded software system on the Raspberry Pi has the following interfaces:
+
+    1. Camera input using a built-in library in Raspbian OS
+    2. Speed and turn data output to the Arduino using RPi.GPIO library
+    3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
+
+* The embedded software system on the Arduino Uno has the following interfaces:
+
+    1. Direction and speed data input using built-in Arduino libraries
+    2. PWM output to motors using built-in Arduino libraries
+
+## 3.4 Communication Interfaces
+
+* The Raspberry Pi will communicate with the Google Cloud Platform over Wifi (IEEE Standard 802.11), using an HTTPS protocol.
+
+* The communication interface between Raspberry Pi and Arduino Uno is a non-standard GPIO interface.
+
+* The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
+
+
+# 5. Other Nonfunctional Requirements
+
+
+## 5.1 Performance Requirements
+
+* Robustness : Vehicle should be robust to deal and act accordingly with respect to all road and tire conditions without decreasing too much performance .
+
+* Quickness : Vehicle should be fast enough to interact with cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
+
+* Failure Handling : In case of failures due to unavoidable reasons it should be able to recover quickly.
+
+* Detection and Response time : TBD
+
+* Battery Life : TBD
+
+* Workload (How performance of the self-driving car changes with time of the day as traffic changes on the road) : TBD
+
+* Scalability : TBD
+
+* Typical throughput required : TBD
+
+
+## 5.2 Safety Requirements
+
+* Systems Safety : Vehicle will be tested in different environments to make it respond safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
+
+* Ethical Considerations : Humans have to take ethical decisions instantly several times on road, car will also be programmed to make ethical decisions in case of emergency.
+
+* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and traffic signals. It will be able to change lanes, take turns, overtake other vehicles on the road based on the detection.
+
+* Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
+
+* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
+
+
+## 5.3 Security Requirements
+
+* Data Sharing : Self driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
+
+* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry pi and cloud.
+
+
+## 5.4 Software Quality Attributes
+
+* Compatibility	: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
+
+* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network .
+
+## 5.5 Business Rules
+
+* Open Source : This software is an Open Source software.
+
+* Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
