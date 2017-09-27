@@ -205,7 +205,7 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 ## 4.1 Go Straight
 
-### 4.1.1 Description and Priority
+### 4.1.1 Description
 
 There is a clear, straight road in front of the car. The car accelerates straight until a new stimulus is introduced in the environment.
 
