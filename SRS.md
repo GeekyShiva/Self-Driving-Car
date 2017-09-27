@@ -185,6 +185,7 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
 
+# System Features
 
 # 5. Other Nonfunctional Requirements
 
