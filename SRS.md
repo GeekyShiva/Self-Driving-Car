@@ -158,7 +158,7 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * The Raspberry Pi Camera Module connects onto the Raspberry Pi via a non-standard parallel interface.
 
-* The ultrasonic distance sensor on the Arduino Uno communicates with Arduino using a regular GPIO interface.
+* The ultrasonic distance sensor communicates with Arduino using a regular GPIO interface.
 
 ## 3.3 Software Interfaces
 
