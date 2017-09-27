@@ -202,6 +202,16 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 # 4. System Features
 
+
+## 4.1 Go Straight
+
+### 4.1.1 Description and Priority
+
+When a straight road is encountered the car goes straight until a new stimulus is introduced in the environment.
+
+### 4.1.2 Response
+
+When encoutered a straight road the car keep moving the the same direction 
 # 5. Other Nonfunctional Requirements
 
 
