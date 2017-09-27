@@ -207,13 +207,13 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 ### 4.1.1 Description and Priority
 
-When a straight road is encountered the car goes straight until a new stimulus is introduced in the environment.
+There is a clear, straight road in front of the car. The car accelerates straight until a new stimulus is introduced in the environment.
 
-### 4.1.2 Response
+### 4.1.2 Functional Response
 
-When encoutered a straight road the car keep moving the the same direction 
+The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at full speed, accelerating the car to its full speed.
+
 # 5. Other Nonfunctional Requirements
-
 
 ## 5.1 Performance Requirements
 
