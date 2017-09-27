@@ -221,7 +221,7 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * Data Sharing : Self driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
 
-* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between raspberry pi and cloud.
+* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry pi and cloud.
 
 
 ## 5.4 Software Quality Attributes
