@@ -5,6 +5,13 @@
    <b> Version <i>1.0</i></b>
 </div><br /><br />
 
+
+#### Product
+    Current Version : 1.0
+    Current Status : Work in Progress
+    Date : 28-09-2017
+
+
 # 1. Introduction
 
 ## 1.1 Purpose
