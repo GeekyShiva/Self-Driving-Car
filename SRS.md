@@ -187,9 +187,9 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 ## 5.1 Performance Requirements
 
-* Robustness : Vehicle should be robust to deal and act accordingly with respect to all road and tire conditions without decreasing too much performance .
+* Robustness : Vehicle should be robust enough to deal with and act according to changes in road and tire conditions without loosing too much performance.
 
-* Quickness : Vehicle should be fast enough to interact with cloud and exchange data on the go and respond to any of the user action in any way without any shattering or buffering.
+* Quickness : Vehicle should be fast enough to interact with cloud and exchange data on the go and respond to any of the user's queries without any shattering or buffering.
 
 * Failure Handling : In case of failures it should be able to fail or recover quickly.
 
@@ -197,7 +197,7 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * Battery Life : TBD
 
-* Workload (How performance of the self-driving car changes with time of the day as traffic changes on the road.) : TBD
+* Workload (How performance of the self-driving car changes with time of the day as traffic changes on the road) : TBD
 
 * Scalability : TBD
 
@@ -214,13 +214,13 @@ Out of Scope
 
 * Systems Safety : Vehicle will be tested in different environments to make it respond safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
 
-* Ethical Considerations : Humans have to take ethical decisions instantly several times on road, car will also be programmed to make ethical decisions in case of emmergency.
+* Ethical Considerations : Humans have to take several ethical decisions when on road. The car will also be programmed to make ethical decisions in case of emmergency.
 
-* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and various objects. It will be able to change lanes, take turns, overtake other vehicles on the road based on the detection.
+* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and various objects. It will be able to change lanes, take turns, overtake other vehicles on the road based on the environment.
 
 * Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid an accident.
 
-* Certifications : Any new software updates or driverless features must be submitted  and get verified from N.H.T.S.A. (for USA)
+* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA).
 
 Out of Scope
 
@@ -231,9 +231,9 @@ Out of Scope
 
 ## 5.3 Security Requirements
 
-* Data Sharing : Self driving car collects a lot of data on the go. Data and stats storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
+* Data Sharing : Self driving car collects a lot of data on the go. Data and stats storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
 
-* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between raspberry pi and cloud.
+* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry Pi and cloud.
 
 Out of scope
 
@@ -244,11 +244,10 @@ Out of scope
 
 * Compatibility	: System should peacefully co-exist with other software.
 
-* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network .
+* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network.
 
 ## 5.5 Business Rules
 
 * Open Source : This software is an Open Source software.
 
 * Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-
