@@ -5,6 +5,14 @@
    <b> Version <i>1.0</i></b>
 </div><br /><br />
 
+----
+
+##### Product : Project Volantè
+##### Description : Self driving RC Car Project
+##### Status : Waiting for Review
+##### Development Status  : design and developement phase
+
+----
 
 #### Product
     Current Version : 1.0
