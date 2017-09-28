@@ -170,9 +170,9 @@ We have used Google Cloud Platform as our cloud platform to run our TensorFlow a
 
 ## 3.1 User Interfaces
 
-Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer like system, like those found in modern day cars.
+Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer system, like those found in modern day cars.
 
-The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them, however, are beyond the scope of this project.
+The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them to work with our system, however, are beyond the scope of this project.
 
 ## 3.2 Hardware Interfaces
 
@@ -204,7 +204,6 @@ The in-dash systems, apart from providing entertainment features and vital infor
 * The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
 
 # 4. System Features
-
 
 ## 4.1 Go Straight
 
