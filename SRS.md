@@ -5,6 +5,21 @@
    <b> Version <i>1.0</i></b>
 </div><br /><br />
 
+----
+
+##### Product : Project Volantè
+##### Description : Self driving RC Car Project
+##### Status : Waiting for Review
+##### Development Status  : design and developement phase
+
+----
+
+#### Product
+    Current Version : 1.0
+    Current Status : Work in Progress
+    Date : 28-09-2017
+
+
 # 1. Introduction
 
 ## 1.1 Purpose
@@ -96,6 +111,10 @@ The **Machine Learning Model** guides the car in the environment based on the da
 
 **Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
 
+### Component Diagram
+
+![al](https://github.com/GeekyShiva/FordMotors-SelfDrivingCar/blob/master/Images/model.jpg)
+
 ## 2.2 Product Functions
 
 * Autonomous motion
@@ -181,17 +200,28 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
 
+# 4. System Features
 
-# 5 Other Nonfunctional Requirements
 
+## 4.1 Go Straight
+
+### 4.1.1 Description
+
+There is a clear, straight road in front of the car. The car accelerates straight until a new stimulus is introduced in the environment.
+
+### 4.1.2 Functional Response
+
+The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at full speed, accelerating the car to its full speed.
+
+# 5. Other Nonfunctional Requirements
 
 ## 5.1 Performance Requirements
 
-* Robustness : Vehicle should be robust enough to deal with and act according to changes in road and tire conditions without loosing too much performance.
+* Robustness : Vehicle should be robust to deal and act accordingly with respect to all road and tire conditions without decreasing too much performance .
 
-* Quickness : Vehicle should be fast enough to interact with cloud and exchange data on the go and respond to any of the user's queries without any shattering or buffering.
+* Quickness : Vehicle should be fast enough to interact with cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
 
-* Failure Handling : In case of failures it should be able to fail or recover quickly.
+* Failure Handling : In case of failures due to unavoidable reasons it should be able to recover quickly.
 
 * Detection and Response time : TBD
 
@@ -203,48 +233,32 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * Typical throughput required : TBD
 
-* Platform : TBD
-
-Out of Scope
-
-* Fallback : Vehicle will be able to change modes in case of an accident.
-
 
 ## 5.2 Safety Requirements
 
 * Systems Safety : Vehicle will be tested in different environments to make it respond safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
 
-* Ethical Considerations : Humans have to take several ethical decisions when on road. The car will also be programmed to make ethical decisions in case of emmergency.
+* Ethical Considerations : Humans have to take ethical decisions instantly several times on road, car will also be programmed to make ethical decisions in case of emergency.
 
-* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and various objects. It will be able to change lanes, take turns, overtake other vehicles on the road based on the environment.
+* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and traffic signals. It will be able to change lanes, take turns, overtake other vehicles on the road based on the detection.
 
-* Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid an accident.
+* Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
 
-* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA).
-
-Out of Scope
-
-* Crash Worthiness : Vehicle will be built to best protect occupants in a crash and sustain damages.
-
-* Post-Crash Behavior : Vehicle will be safe to use again after a crash. Auto-drive mode will not be enabled until sensors are enabled.
+* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
 
 
 ## 5.3 Security Requirements
 
-* Data Sharing : Self driving car collects a lot of data on the go. Data and stats storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
+* Data Sharing : Self driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
 
-* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry Pi and cloud.
-
-Out of scope
-
-* Privacy : Vehicle owner will have the authority on the type of data being collected by the self-driving car.
+* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry pi and cloud.
 
 
 ## 5.4 Software Quality Attributes
 
-* Compatibility	: System should peacefully co-exist with other software.
+* Compatibility	: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
 
-* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network.
+* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network .
 
 ## 5.5 Business Rules
 
