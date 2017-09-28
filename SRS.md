@@ -237,7 +237,7 @@ The machine learning model classifies the path in front of the car to be a clear
 
 The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
 
-# 4.11.2 Functional Response
+### 4.11.2 Functional Response
 
 The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
 
