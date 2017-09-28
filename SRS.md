@@ -219,51 +219,48 @@ The machine learning model classifies the path in front of the car to be a clear
 
 ## 5.1 Performance Requirements
 
-* Robustness : Vehicle should be robust to deal and act accordingly with respect to all road and tire conditions without decreasing too much performance .
+* Robustness: Vehicle should be robust enough to deal with and act accord to changes in road and tire conditions without loosing too much performance.
 
-* Quickness : Vehicle should be fast enough to interact with cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
+* Quickness: Vehicle's embedded system should be fast enough to interact with the cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
 
-* Failure Handling : In case of failures due to unavoidable reasons it should be able to recover quickly.
+* Failure Handling: In case of failures due to unavoidable reasons, the vehicle should be able to recover quickly.
 
-* Detection and Response time : TBD
+* Detection and Response time: TBD
 
-* Battery Life : TBD
+* Battery Life: TBD
 
-* Workload (How performance of the self-driving car changes with time of the day as traffic changes on the road) : TBD
+* Workload (How the performance of the self-driving car changes with time of the day or traffic conditions on the road): TBD
 
-* Scalability : TBD
+* Scalability: TBD
 
-* Typical throughput required : TBD
-
+* Typical throughput required: TBD
 
 ## 5.2 Safety Requirements
 
-* Systems Safety : Vehicle will be tested in different environments to make it respond safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
+* Systems Safety: Vehicle will be tested in different environments to make sure it responds safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
 
-* Ethical Considerations : Humans have to take ethical decisions instantly several times on road, car will also be programmed to make ethical decisions in case of emergency.
+* Ethical Considerations: Humans have to take instant ethical decisions several times when on road. The car will also be programmed to make ethical decisions in case of emergency.
 
-* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and traffic signals. It will be able to change lanes, take turns, overtake other vehicles on the road based on the detection.
+* Detection and Response: Vehicle will be able to detect and respond to other vehicles, pedestrians, animals and traffic signals. It will be able to change lanes, take turns and overtake other vehicles on the road based on the detection.
 
-* Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
+* Laws and Practices: Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
 
-* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
-
+* Certifications: Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
 
 ## 5.3 Security Requirements
 
-* Data Sharing : Self driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
+* Data Sharing: Self-driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
 
-* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry pi and cloud.
-
+* Digital Security: Vehicle will be engineered to prevent online threats. All communications between Raspberry Pi and the GCP will be encrypted using SSL.
 
 ## 5.4 Software Quality Attributes
 
-* Compatibility	: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
+* Compatibility: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
 
-* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network .
+* Error Handling: Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network.
 
 ## 5.5 Business Rules
 
-* Open Source : This software is an Open Source software.
+* Open Source: This software is an Open Source software.
 
-* Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* Guidelines: Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
