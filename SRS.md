@@ -26,18 +26,18 @@
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
-Goal of this project is to make an autonomous self-driving car, capable of maneuvering around bends, avoid obstacles and follow traffic signals and road signs.
+Goal of this project is to make an autonomous self-driving car, capable of manoeuvreing around bends, avoiding obstacles and following traffic signals and road signs.
 
 The tools used in this project and described in this document are:
 
 * TensorFlow library for machine learning
-* Vision API by Google Cloud Platform and Tensor Flow.
+* Vision API by Google Cloud Platform and TensorFlow.
 
 The hardware used in this project and described in this document are:
 
 * RC Car serving as the actual self-driving car
 * Arduino Uno used for controlling the car speed and turning radius
-* Ultrasonic sensor to detect objects infront of the car
+* Ultrasonic sensor to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
 * PiCamera used for capturing objects in front of the car
 
@@ -45,8 +45,8 @@ The hardware used in this project and described in this document are:
 
 * All terms are in _italics_ style.
 * Main features or important terms are in *bold*.
-* TBD means "To be Decided", these are the components that are not yet decided
-* For more references see Terminology
+* TBD means "To be Decided". These are the components that are not yet decided.
+* For more references see Terminology.
 
 ## 1.3 Intended Audience and Reading Suggestions
 
@@ -61,7 +61,7 @@ This Software Requirement Specification also includes:
 
 ## 1.4 Product Scope
 
-Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people’s productivity, but also on the environment.
+Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people's productivity, but also on the environment.
 
 Recent developments in machine learning and artificial intelligence, along with the ever increasing performance of modern day computers has enabled the use of these technologies in developing self-driving cars. These cars have several advantages, as described below:
 
@@ -70,13 +70,13 @@ Recent developments in machine learning and artificial intelligence, along with 
 * Increased productivity: Reduced commute times mean more time can be spent on what matters more.
 * Reduced expenditure: Reduction in accidents will directly lead to reduced expenditure on damages.
 * Environment friendly: Efficient driving styles of the self driving car will lead to lower emissions.
-* Solution to Parking Problem: Most of the modern cities face parking problems and which can be resolved by this solution.
-* Speed Limits: Better Law enforcement can be achieved and traffic can be manged by capping via speed in various regions.
-* Potential For New Design: Because a vehicle may eventually function as a sort of self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained
+* Solution to parking problem: Most of the modern cities face parking problems and which can be resolved by this solution.
+* Better traffic discipline: Better law enforcement can be achieved and traffic can be managed by capping speed in various regions.
+* Potential for new design: Because a vehicle may eventually function as a self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained.
 
 ## 1.5 References
 
-* This document is written in GitBub flavored Markdown.
+* This document is written in GitHub flavored Markdown.
 * IEEE Standard 830-1998 Recommended Practice for Software Requirements Specifications.
 
 ## 1.6 Terminology
@@ -91,6 +91,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
 | GCP | Gooogle Cloud Platform for running the machine learning algorithm |
+
 # 2 Overall Description
 
 ## 2.1 Product Perspective
