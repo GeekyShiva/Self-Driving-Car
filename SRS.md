@@ -98,11 +98,11 @@ Recent developments in machine learning and artificial intelligence, along with 
 
 This system consists of following components:
 
-* RC Car, it is analogous to real world car and tries to mimic it
-* Machine Learning Model, it makes decisions as to how the car should move
-* Arduino and Raspberry Pi, they control the car’s underlying hardware
-* PiCam, it collects visual data
-* Ultrasonic Sensor (HC - SR04), it collects distance data
+* RC Car: analogous to real world car and tries to mimic it
+* Machine Learning Model: makes decisions as to how the car should move
+* Arduino and Raspberry Pi: along with motors, form the car’s underlying hardware
+* PiCam: collects visual data
+* Ultrasonic Sensor (HC - SR04): collects distance data
 
 **RC Car** acts as an analog to the real world car with basic motion capabilities. It is battery operated.
 
@@ -144,13 +144,15 @@ An embedded system with the following minimum specifications:
 
 **Additional Requirements:** A cloud server able to host a TensorFlow application.
 
-To satisfy the above requirements, we have divided the system into to MCUs, an Arduino Uno and a Raspberry Pi.
+To satisfy the embedded system requirements, we have divided the system into to MCUs, an Arduino Uno and a Raspberry Pi.
+
+We have used Google Cloud Platform as our cloud platform to run our TensorFlow application.
 
 ## 2.5 Design and Implementation Constraints
 
 * Heavy processing power for running neural networks for classification, thus necessitating the use of a cloud platform.
 * Stable and fast internet connection, as a slow connection can cause a delay in the car’s response to its environment.
-* Huge data set so that the car can adapt to its environment.
+* Huge data set so that the car can adapt well to its environment.
 
 ## 2.6 Assumption and Dependencies
 
