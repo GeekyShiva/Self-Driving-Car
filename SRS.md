@@ -213,7 +213,7 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 
 ### 4.1.2 Functional Response
 
-The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at full speed, accelerating the car to its full speed.
+The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
 
 # 5. Other Nonfunctional Requirements
 
