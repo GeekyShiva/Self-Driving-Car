@@ -205,7 +205,23 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 # 4. System Features
 
-## 4.1 Go Straight
+| Use Case Title | Description |
+| --- | --- |
+| Clear straight road | The road in front of the car is straight and clear. |
+| Encounter left road | The road in front of the car is curving the left, which can be a curve of upto 90 degrees. |
+| Encounter right road | The road in front of the car is curving the right, which can be a curve of upto 90 degrees. |
+| Inactive traffic signal | There is a traffic signal in front of the car with all its light off. |
+| Encounter solid "red" traffic signal | There is a traffic signal in front of the car with a solid red light. |
+| Encounter solid "yellow" traffic signal | There is a traffic signal in front of the car with a solid yellow light. |
+| Encounter solid "green" traffic signal | There is a traffic signal in front of the car with a solid green light. |
+| Encounter flashing "red" traffic signal | There is a traffic signal in front of the car with a flashing red light. |
+| Encounter flashing "yellow" traffic signal | There is a traffic signal in front of the car with a flashing yellow light. |
+| Encounter "STOP" sign | There is a "STOP" sign board in front of the car. |
+| Encounter "GO" sign | There is a "GO" sign board in front of the car. |
+| Encounter obstacles | There is an obstacle, like another car or human being, in front of the car. |
+| Sudden appearance of an object | An object suddenly appears in front of the car. |
+
+## 4.1 Scenario: Clear straight road
 
 ### 4.1.1 Description
 
@@ -214,6 +230,36 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 ### 4.1.2 Functional Response
 
 The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
+
+## 4.11 Scenario: Encounter GO sign
+
+### 4.11.1 Description
+
+The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
+
+### 4.11.2 Functional Response
+
+The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+
+## 4.12 Scenario: Encounter obstacle
+
+### 4.12.1 Description
+
+The car encounters an obstacle right in front of it. The car comes to a halt, and waits for the obstacle to be cleared before resuming normal operation.
+
+### 4.12.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+## 4.13 Scenario: Sudden appearance of an object in front of the car
+
+### 4.13.1 Description
+
+This scenario is very similiar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
+
+### 4.13.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 # 5. Other Nonfunctional Requirements
 
