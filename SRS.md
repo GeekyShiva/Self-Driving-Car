@@ -7,7 +7,7 @@
 
 ----
 
-##### Product : Project Volantè
+##### Product : Project Volantè [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 ##### Description : Self driving RC Car Project
 ##### Status : Waiting for Review
 ##### Development Status  : design and developement phase
@@ -26,18 +26,18 @@
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
-Goal of this project is to make an autonomous self-driving car, capable of maneuvering around bends, avoid obstacles and follow traffic signals and road signs.
+Goal of this project is to make an autonomous self-driving car, capable of manoeuvreing around bends, avoiding obstacles and following traffic signals and road signs.
 
 The tools used in this project and described in this document are:
 
 * TensorFlow library for machine learning
-* Vision API by Google Cloud Platform and Tensor Flow.
+* Vision API by Google Cloud Platform and TensorFlow.
 
 The hardware used in this project and described in this document are:
 
 * RC Car serving as the actual self-driving car
 * Arduino Uno used for controlling the car speed and turning radius
-* Ultrasonic sensor to detect objects infront of the car
+* Ultrasonic sensor to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
 * PiCamera used for capturing objects in front of the car
 
@@ -45,8 +45,8 @@ The hardware used in this project and described in this document are:
 
 * All terms are in _italics_ style.
 * Main features or important terms are in *bold*.
-* TBD means "To be Decided", these are the components that are not yet decided
-* For more references see Terminology
+* TBD means "To be Decided". These are the components that are not yet decided.
+* For more references see Terminology.
 
 ## 1.3 Intended Audience and Reading Suggestions
 
@@ -61,7 +61,7 @@ This Software Requirement Specification also includes:
 
 ## 1.4 Product Scope
 
-Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people’s productivity, but also on the environment.
+Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people's productivity, but also on the environment.
 
 Recent developments in machine learning and artificial intelligence, along with the ever increasing performance of modern day computers has enabled the use of these technologies in developing self-driving cars. These cars have several advantages, as described below:
 
@@ -70,13 +70,13 @@ Recent developments in machine learning and artificial intelligence, along with 
 * Increased productivity: Reduced commute times mean more time can be spent on what matters more.
 * Reduced expenditure: Reduction in accidents will directly lead to reduced expenditure on damages.
 * Environment friendly: Efficient driving styles of the self driving car will lead to lower emissions.
-* Solution to Parking Problem: Most of the modern cities face parking problems and which can be resolved by this solution.
-* Speed Limits: Better Law enforcement can be achieved and traffic can be manged by capping via speed in various regions.
-* Potential For New Design: Because a vehicle may eventually function as a sort of self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained
+* Solution to parking problem: Most of the modern cities face parking problems and which can be resolved by this solution.
+* Better traffic discipline: Better law enforcement can be achieved and traffic can be managed by capping speed in various regions.
+* Potential for new design: Because a vehicle may eventually function as a self guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained.
 
 ## 1.5 References
 
-* This document is written in GitBub flavored Markdown.
+* This document is written in GitHub flavored Markdown.
 * IEEE Standard 830-1998 Recommended Practice for Software Requirements Specifications.
 
 ## 1.6 Terminology
@@ -91,17 +91,18 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
 | GCP | Gooogle Cloud Platform for running the machine learning algorithm |
+
 # 2 Overall Description
 
 ## 2.1 Product Perspective
 
 This system consists of following components:
 
-* RC Car, it is analogous to real world car and tries to mimic it
-* Machine Learning Model, it makes decisions as to how the car should move
-* Arduino and Raspberry Pi, they control the car’s underlying hardware
-* PiCam, it collects visual data
-* Ultrasonic Sensor (HC - SR04), it collects distance data
+* RC Car: analogous to real world car and tries to mimic it
+* Machine Learning Model: makes decisions as to how the car should move
+* Arduino and Raspberry Pi: along with motors, form the car’s underlying hardware
+* PiCam: collects visual data
+* Ultrasonic Sensor (HC - SR04): collects distance data
 
 **RC Car** acts as an analog to the real world car with basic motion capabilities. It is battery operated.
 
@@ -143,13 +144,15 @@ An embedded system with the following minimum specifications:
 
 **Additional Requirements:** A cloud server able to host a TensorFlow application.
 
-To satisfy the above requirements, we have divided the system into to MCUs, an Arduino Uno and a Raspberry Pi.
+To satisfy the embedded system requirements, we have divided the system into to MCUs, an Arduino Uno and a Raspberry Pi.
+
+We have used Google Cloud Platform as our cloud platform to run our TensorFlow application.
 
 ## 2.5 Design and Implementation Constraints
 
 * Heavy processing power for running neural networks for classification, thus necessitating the use of a cloud platform.
 * Stable and fast internet connection, as a slow connection can cause a delay in the car’s response to its environment.
-* Huge data set so that the car can adapt to its environment.
+* Huge data set so that the car can adapt well to its environment.
 
 ## 2.6 Assumption and Dependencies
 
@@ -167,9 +170,9 @@ To satisfy the above requirements, we have divided the system into to MCUs, an A
 
 ## 3.1 User Interfaces
 
-Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer like system, like those found in modern day cars.
+Since this an autonomous self-driving car, the user does not directly interact with the car. Rather, the car may have some in-dash computer system, like those found in modern day cars.
 
-The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them, however, are beyond the scope of this project.
+The in-dash systems, apart from providing entertainment features and vital information like speed and engine RPM, provide navigation aids like GPS as well. They, thus, act as an interface between the user and the car. Such in-dash systems and modifications required for them to work with our system, however, are beyond the scope of this project.
 
 ## 3.2 Hardware Interfaces
 
@@ -202,8 +205,23 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 # 4. System Features
 
+| Use Case Title | Description |
+| --- | --- |
+| Clear straight road | The road in front of the car is straight and clear. |
+| Encounter left road | The road in front of the car is curving the left, which can be a curve of upto 90 degrees. |
+| Encounter right road | The road in front of the car is curving the right, which can be a curve of upto 90 degrees. |
+| Inactive traffic signal | There is a traffic signal in front of the car with all its light off. |
+| Encounter solid "red" traffic signal | There is a traffic signal in front of the car with a solid red light. |
+| Encounter solid "yellow" traffic signal | There is a traffic signal in front of the car with a solid yellow light. |
+| Encounter solid "green" traffic signal | There is a traffic signal in front of the car with a solid green light. |
+| Encounter flashing "red" traffic signal | There is a traffic signal in front of the car with a flashing red light. |
+| Encounter flashing "yellow" traffic signal | There is a traffic signal in front of the car with a flashing yellow light. |
+| Encounter "STOP" sign | There is a "STOP" sign board in front of the car. |
+| Encounter "GO" sign | There is a "GO" sign board in front of the car. |
+| Encounter obstacles | There is an obstacle, like another car or human being, in front of the car. |
+| Sudden appearance of an object | An object suddenly appears in front of the car. |
 
-## 4.1 Go Straight
+## 4.1 Scenario: Clear straight road
 
 ### 4.1.1 Description
 
@@ -211,57 +229,84 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 
 ### 4.1.2 Functional Response
 
-The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at full speed, accelerating the car to its full speed.
+The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
+
+## 4.11 Scenario: Encounter GO sign
+
+### 4.11.1 Description
+
+The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
+
+### 4.11.2 Functional Response
+
+The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+
+## 4.12 Scenario: Encounter obstacle
+
+### 4.12.1 Description
+
+The car encounters an obstacle right in front of it. The car comes to a halt, and waits for the obstacle to be cleared before resuming normal operation.
+
+### 4.12.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+## 4.13 Scenario: Sudden appearance of an object in front of the car
+
+### 4.13.1 Description
+
+This scenario is very similiar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
+
+### 4.13.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 # 5. Other Nonfunctional Requirements
 
 ## 5.1 Performance Requirements
 
-* Robustness : Vehicle should be robust to deal and act accordingly with respect to all road and tire conditions without decreasing too much performance .
+* Robustness: Vehicle should be robust enough to deal with and act accord to changes in road and tire conditions without loosing too much performance.
 
-* Quickness : Vehicle should be fast enough to interact with cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
+* Quickness: Vehicle's embedded system should be fast enough to interact with the cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
 
-* Failure Handling : In case of failures due to unavoidable reasons it should be able to recover quickly.
+* Failure Handling: In case of failures due to unavoidable reasons, the vehicle should be able to recover quickly.
 
-* Detection and Response time : TBD
+* Detection and Response time: TBD
 
-* Battery Life : TBD
+* Battery Life: TBD
 
-* Workload (How performance of the self-driving car changes with time of the day as traffic changes on the road) : TBD
+* Workload (How the performance of the self-driving car changes with time of the day or traffic conditions on the road): TBD
 
-* Scalability : TBD
+* Scalability: TBD
 
-* Typical throughput required : TBD
-
+* Typical throughput required: TBD
 
 ## 5.2 Safety Requirements
 
-* Systems Safety : Vehicle will be tested in different environments to make it respond safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
+* Systems Safety: Vehicle will be tested in different environments to make sure it responds safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
 
-* Ethical Considerations : Humans have to take ethical decisions instantly several times on road, car will also be programmed to make ethical decisions in case of emergency.
+* Ethical Considerations: Humans have to take instant ethical decisions several times when on road. The car will also be programmed to make ethical decisions in case of emergency.
 
-* Detection and Response : Vehicle will be able to detect and respond to other vehicles and pedestrians, animals and traffic signals. It will be able to change lanes, take turns, overtake other vehicles on the road based on the detection.
+* Detection and Response: Vehicle will be able to detect and respond to other vehicles, pedestrians, animals and traffic signals. It will be able to change lanes, take turns and overtake other vehicles on the road based on the detection.
 
-* Laws and Practices : Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
+* Laws and Practices: Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
 
-* Certifications : Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
-
+* Certifications: Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
 
 ## 5.3 Security Requirements
 
-* Data Sharing : Self driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of breakdown.
+* Data Sharing: Self-driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
 
-* Digital Security : Vehicle will be engineered to prevent online threats, here encrypted data will be send and received between Raspberry pi and cloud.
-
+* Digital Security: Vehicle will be engineered to prevent online threats. All communications between Raspberry Pi and the GCP will be encrypted using SSL.
 
 ## 5.4 Software Quality Attributes
 
-* Compatibility	: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
+* Compatibility: Any additional feature that will be added to the self-driving car should peacefully co-exist with existing features.
 
-* Error Handling : Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network .
+* Error Handling: Vehicle should not cause or trigger any events that create accident-prone situation on the road under events like loss of network.
 
 ## 5.5 Business Rules
 
-* Open Source : This software is an Open Source software.
+* Open Source: This software is an Open Source software.
 
-* Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* Guidelines: Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
