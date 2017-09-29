@@ -235,3 +235,13 @@ The in-dash systems, apart from providing entertainment features and vital infor
 * Open Source : This software is an Open Source software.
 
 * Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+
+
+
+# 4 System Features
+
+## Inactive Traffic Signal
+
+
+
