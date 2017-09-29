@@ -231,6 +231,7 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 
 The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
 
+<<<<<<< HEAD
 
 ## 4.4 Scenario: Encounter inactive traffic signal
 
@@ -252,8 +253,35 @@ The car encounters a red traffic signal right in front of it on the road. The ca
 ### 4.5.2 Functional Response
 
 The machine learning model along with the data alerts the Raspberry Pi of the presence of a red traffic signal. The Raspberry Pi instructs the Arduino to halt the car's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+=======
+## 4.11 Scenario: Encounter GO sign
 
+### 4.11.1 Description
 
+The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
+
+### 4.11.2 Functional Response
+
+The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+
+## 4.12 Scenario: Encounter obstacle
+
+### 4.12.1 Description
+
+The car encounters an obstacle right in front of it. The car comes to a halt, and waits for the obstacle to be cleared before resuming normal operation.
+
+### 4.12.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+## 4.13 Scenario: Sudden appearance of an object in front of the car
+
+### 4.13.1 Description
+>>>>>>> 868d8c55d0ff49d7663735581a522a7fc44a48b8
+
+This scenario is very similiar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
+
+<<<<<<< HEAD
 ## 4.6 Scenario: Encounter yellow traffic signal
 
 ### 4.6.1 Description
@@ -331,6 +359,48 @@ The machine learning model, along with the data from the distance sensor, alert 
 
 * Data Sharing: Self-driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
 
+=======
+### 4.13.2 Functional Response
+
+The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+# 5. Other Nonfunctional Requirements
+
+## 5.1 Performance Requirements
+
+* Robustness: Vehicle should be robust enough to deal with and act accord to changes in road and tire conditions without loosing too much performance.
+
+* Quickness: Vehicle's embedded system should be fast enough to interact with the cloud and exchange data with it on the go while responding to the user actions without any shattering or buffering.
+
+* Failure Handling: In case of failures due to unavoidable reasons, the vehicle should be able to recover quickly.
+
+* Detection and Response time: TBD
+
+* Battery Life: TBD
+
+* Workload (How the performance of the self-driving car changes with time of the day or traffic conditions on the road): TBD
+
+* Scalability: TBD
+
+* Typical throughput required: TBD
+
+## 5.2 Safety Requirements
+
+* Systems Safety: Vehicle will be tested in different environments to make sure it responds safely to software malfunctions, near crashes, near breakdowns, loss of traction and other risks.
+
+* Ethical Considerations: Humans have to take instant ethical decisions several times when on road. The car will also be programmed to make ethical decisions in case of emergency.
+
+* Detection and Response: Vehicle will be able to detect and respond to other vehicles, pedestrians, animals and traffic signals. It will be able to change lanes, take turns and overtake other vehicles on the road based on the detection.
+
+* Laws and Practices: Vehicle will follow laws of the location it is being operated in. It will be able to recognize different speed limits and traffic rules of different states and cities. Vehicle should be able to violate the law to avoid any fatal accident.
+
+* Certifications: Any new software updates or driverless features must be submitted and get verified from N.H.T.S.A. (for USA)
+
+## 5.3 Security Requirements
+
+* Data Sharing: Self-driving car collects a lot of data on the go. Data and statistics storage will be done to maintain correct functioning of the car and to reconstruct what went wrong in case of a breakdown.
+
+>>>>>>> 868d8c55d0ff49d7663735581a522a7fc44a48b8
 * Digital Security: Vehicle will be engineered to prevent online threats. All communications between Raspberry Pi and the GCP will be encrypted using SSL.
 
 ## 5.4 Software Quality Attributes
@@ -344,6 +414,7 @@ The machine learning model, along with the data from the distance sensor, alert 
 * Open Source: This software is an Open Source software.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Guidelines : Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 
@@ -355,6 +426,9 @@ The machine learning model, along with the data from the distance sensor, alert 
 
 
 
+=======
+* Guidelines: Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+>>>>>>> 868d8c55d0ff49d7663735581a522a7fc44a48b8
 =======
 * Guidelines: Unless required by applicable law or agreed to in writing, software distributed is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 >>>>>>> 868d8c55d0ff49d7663735581a522a7fc44a48b8
