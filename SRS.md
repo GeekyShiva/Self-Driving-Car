@@ -1,8 +1,8 @@
-﻿ <div align=center>
-   <h1>Software Requirements Specification</h1>
-   <h2>Project Volantè</h2>
-   <b> Self Driving Car </b><br />
-   <b> Version <i>1.0</i></b>
+<div align=center>
+  <h1>Software Requirements Specification</h1>
+  <h2>Project Volantè</h2>
+  <b> Self Driving Car </b><br />
+  <b> Version <i>1.0</i></b>
 </div><br /><br />
 
 ----
@@ -15,9 +15,9 @@
 ----
 
 #### Product
-    Current Version : 1.0
-    Current Status : Work in Progress
-    Date : 28-09-2017
+   Current Version : 1.0
+   Current Status : Work in Progress
+   Date : 28-09-2017
 
 
 # 1. Introduction
@@ -186,14 +186,14 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * The embedded software system on the Raspberry Pi has the following interfaces:
 
-    1. Camera input using a built-in library in Raspbian OS
-    2. Speed and turn data output to the Arduino using RPi.GPIO library
-    3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
+   1. Camera input using a built-in library in Raspbian OS
+   2. Speed and turn data output to the Arduino using RPi.GPIO library
+   3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
 
 * The embedded software system on the Arduino Uno has the following interfaces:
 
-    1. Direction and speed data input using built-in Arduino libraries
-    2. PWM output to motors using built-in Arduino libraries
+   1. Direction and speed data input using built-in Arduino libraries
+   2. PWM output to motors using built-in Arduino libraries
 
 ## 3.4 Communication Interfaces
 
@@ -230,6 +230,38 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 ### 4.1.2 Functional Response
 
 The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
+
+## 4.4 Scenario: Encounter inactive traffic signal
+
+### 4.4.1 Description
+
+The car encounters an inactive traffic signal right in front of it on the road. The car decreases it's speed but continues it's motion. Car continues to move at this speed until it has passed the traffic signal, then accelerates and continues its motion with original speed, depending on the environment.
+
+### 4.4.2 Functional Response
+
+The machine learning model along with the data alerts the Raspberry Pi of the presence of an inactive traffic signal. The Raspberry Pi instructs the Arduino to decrease the car's speed. The Raspberry Pi makes car to move in the decreased speed until it crosses the traffic signal. Once past the traffic signal, Raspberry Pi instructs the Arduino to accelerate and resume it's motion with original speed and waits for the next stimulus.
+
+
+## 4.5 Scenario: Encounter red traffic signal
+
+### 4.5.1 Description
+
+The car encounters a red traffic signal right in front of it on the road. The car comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment.
+
+### 4.5.2 Functional Response
+
+The machine learning model along with the data alerts the Raspberry Pi of the presence of a red traffic signal. The Raspberry Pi instructs the Arduino to halt the car's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+
+## 4.6 Scenario: Encounter yellow traffic signal
+
+### 4.6.1 Description
+
+The scenario is very similar to 4.5 with the difference that the car encounters a yellow traffic signal right in front of it on the road. The car slowly decreases it's speed and comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment.
+
+### 4.6.2 Functional Response
+
+The machine learning model along with the data alerts the Raspberry Pi of the presence of a yellow traffic signal. The Raspberry Pi instructs the Arduino to slowly decrease the car's speed and halt the it's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.11 Scenario: Encounter GO sign
 
