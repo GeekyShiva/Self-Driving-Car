@@ -267,13 +267,13 @@ The machine learning model along with the data alerts the Raspberry Pi of the pr
 
 ### 4.11.1 Description
 
-The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
+The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment and the stimulus recieved.
 
 ### 4.11.2 Functional Response
 
-The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
 
-## 4.12 Scenario: Encounter obstacle
+## 4.12 Scenario: Encounter obstacle (Case of Normal Braking)
 
 ### 4.12.1 Description
 
@@ -283,7 +283,7 @@ The car encounters an obstacle right in front of it. The car comes to a halt, an
 
 The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
-## 4.13 Scenario: Sudden appearance of an object in front of the car
+## 4.13 Scenario: Sudden appearance of an object in front of the car (Case of Emergency Braking)
 
 ### 4.13.1 Description
 
@@ -312,6 +312,8 @@ The machine learning model, along with the data from the distance sensor, alert 
 * Scalability: TBD
 
 * Typical throughput required: TBD
+
+Please Note:  _All **TBD** points are kept under check and will only be updated once we get a clearer response and valid as well as computable data to determine the conditions_  
 
 ## 5.2 Safety Requirements
 
