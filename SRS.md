@@ -26,7 +26,7 @@
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
-Goal of this project is to make an autonomous self-driving car, capable of manoeuvreing around bends, avoiding obstacles and following traffic signals and road signs.
+Goal of this project is to make an autonomous self-driving car, capable of manoeuvring around bends, avoiding obstacles and following traffic signals and road signs.
 
 The tools used in this project and described in this document are:
 
@@ -90,7 +90,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Store | This is the persistence layer of whole system. |
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
-| GCP | Gooogle Cloud Platform for running the machine learning algorithm |
+| GCP | Google Cloud Platform for running the machine learning algorithm |
 
 # 2 Overall Description
 
@@ -235,33 +235,33 @@ The machine learning model classifies the path in front of the car to be a clear
 
 ### 4.4.1 Description
 
-The car encounters an inactive traffic signal right in front of it on the road. The car decreases it's speed but continues it's motion. Car continues to move at this speed until it has passed the traffic signal, then accelerates and continues its motion with original speed, depending on the environment.
+The car encounters an inactive traffic signal right in front of it on the road. The car decreases it's speed but continues it's motion. Car continues to move at this speed until it has passed the traffic signal, then accelerates and continues its motion with original speed, depending on the environment and the stimulus recieved.
 
 ### 4.4.2 Functional Response
 
-The machine learning model along with the data alerts the Raspberry Pi of the presence of an inactive traffic signal. The Raspberry Pi instructs the Arduino to decrease the car's speed. The Raspberry Pi makes car to move in the decreased speed until it crosses the traffic signal. Once past the traffic signal, Raspberry Pi instructs the Arduino to accelerate and resume it's motion with original speed and waits for the next stimulus.
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of an inactive traffic signal. The Raspberry Pi instructs the Arduino to decrease the car's speed. The Raspberry Pi makes car to move in the decreased speed until it crosses the traffic signal. Once past the traffic signal, Raspberry Pi instructs the Arduino to accelerate and resume it's motion with original speed and waits for the next stimulus.
 
 
 ## 4.5 Scenario: Encounter red traffic signal
 
 ### 4.5.1 Description
 
-The car encounters a red traffic signal right in front of it on the road. The car comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment.
+The car encounters a red traffic signal right in front of it on the road. The car comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment and the stimulus recieved.
 
 ### 4.5.2 Functional Response
 
-The machine learning model along with the data alerts the Raspberry Pi of the presence of a red traffic signal. The Raspberry Pi instructs the Arduino to halt the car's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a red traffic signal. The Raspberry Pi instructs the Arduino to halt the car's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 
 ## 4.6 Scenario: Encounter yellow traffic signal
 
 ### 4.6.1 Description
 
-The scenario is very similar to 4.5 with the difference that the car encounters a yellow traffic signal right in front of it on the road. The car slowly decreases it's speed and comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment.
+The scenario is very similar to 4.5 with the difference that the car encounters a yellow traffic signal right in front of it on the road. The car slowly decreases it's speed and comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment and the stimulus recieved.
 
 ### 4.6.2 Functional Response
 
-The machine learning model along with the data alerts the Raspberry Pi of the presence of a yellow traffic signal. The Raspberry Pi instructs the Arduino to slowly decrease the car's speed and halt the it's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a yellow traffic signal. The Raspberry Pi instructs the Arduino to slowly decrease the car's speed and halt the it's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.11 Scenario: Encounter GO sign
 
@@ -287,7 +287,7 @@ The machine learning model, along with the data from the distance sensor, alert 
 
 ### 4.13.1 Description
 
-This scenario is very similiar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
+This scenario is very similar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
 
 ### 4.13.2 Functional Response
 
