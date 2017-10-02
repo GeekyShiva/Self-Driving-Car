@@ -17,8 +17,16 @@
 #### Product
    Current Version : 1.0
    Current Status : Work in Progress
-   Date : 28-09-2017
+   Date : 03-10-2017
+   
+   
+#### Team Project Volantè
 
+- **Dhruv Parashar**  U101115FCS082
+- **Shivang Shekhar**  U101115FCS148
+- **Sudhanshu Gupta**  U101115FCS160
+- **Yash Deepak Vaidya**  U101115FCS182
+- **Tanmay Eknath Patil**  U101115FCS164
 
 # 1. Introduction
 
