@@ -301,8 +301,7 @@ When the machine learning model classifies that there is a yellow flashing light
 There is a traffic signal in front of the car with a solid green light. If a GREEN Signal is encountered, the car accelerates straight until a new stimulus is introduced in the environment.
 
 ### 4.7.2 Functional Response
-
-The machine learning model alerts the Raspberry Pi of the presence of a green signal. The Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The computer vision data received post-processing results in alerting the Raspberry Pi of the presence of a green signal. The Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.8 Scenario: Encounter flashing RED Signal
 
@@ -312,7 +311,7 @@ There is a traffic signal in front of the car with a flashing red light. A flash
 
 ### 4.8.2 Functional Response
 
-The machine learning model alerts the Raspberry Pi of the presence of a flashing red signal. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+The computer vision data received post-processing results in alerting the Raspberry Pi of the presence of a flashing red signal. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.10 Scenario: Encounter STOP Sign
 
@@ -322,7 +321,7 @@ There is a "STOP" sign board in front of the car. If a STOP sign is encountered,
 
 ### 4.10.2 Functional Response
 
-The machine learning model alerts the Raspberry Pi of the presence of a STOP sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+The computer vision data received post-processing results in alerting the Raspberry Pi of the presence of a STOP sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.11 Scenario: Encounter GO sign
 
