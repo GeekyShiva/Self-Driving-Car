@@ -229,7 +229,7 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 
 ### 4.1.2 Functional Response
 
-The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
+The computer vision data is sent to the machine learning model for classification. The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
 
 ## 4.2 Scenario : Encounter left curve
 
@@ -239,7 +239,7 @@ The machine learning model classifies the path in front of the car to be a clear
 
 ## 4.2.1 Function Response
 
-When the machine learning model classifies the road ahead as a left turn, the Arduino slows the forward motors down and start the turning the front wheels to the appropriate degrees in the left direction.
+The computer vision data is sent to the machine learning model for classification. When the machine learning model classifies the road ahead as a left turn, the Arduino slows the forward motors down and start the turning the front wheels to the appropriate degrees in the left direction.
 
 ## 4.3 Scenario : Encounter right curve
 
@@ -249,7 +249,7 @@ When the machine learning model classifies the road ahead as a left turn, the Ar
 
 ## 4.3.1 Function Response
 
-When the machine learning model classifies the road ahead as a right turn, the Arduino slows the forward motors down and start the turning the front wheels to the appropriate degrees in the right direction.
+The computer vision data is sent to the machine learning model for classification. When the machine learning model classifies the road ahead as a right turn, the Arduino slows the forward motors down and start the turning the front wheels to the appropriate degrees in the right direction.
 
 ## 4.4 Scenario: Encounter inactive traffic signal
 
@@ -282,18 +282,6 @@ The scenario is very similar to 4.5 with the difference that the car encounters 
 
 The computer vision data received post-processing results in alerting the Raspberry Pi of the presence of a yellow traffic signal. The Raspberry Pi instructs the Arduino to slowly decrease the car's speed and halt its motion, applying reversing motion, if necessary. The Raspberry Pi makes the car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
-
-## 4.9 Flashing Yellow Light
-
-### 4.9.1 Description
-
-When encountered with a flashing yellow light the car slows down and enters into an alert state.  
-
-### 4.9.2 Function Response
-
-When the machine learning model classifies that there is a yellow flashing light in front, the Arduino slows the motors and the model enters into an alert state.
-
-
 ## 4.7 Scenario: Encounter GREEN Signal
 
 ### 4.7.1 Description
@@ -312,6 +300,16 @@ There is a traffic signal in front of the car with a flashing red light. A flash
 ### 4.8.2 Functional Response
 
 The computer vision data received post-processing results in alerting the Raspberry Pi of the presence of a flashing red signal. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+
+## 4.9 Flashing Yellow Light
+
+### 4.9.1 Description
+
+When encountered with a flashing yellow light the car slows down and enters into an alert state.  
+
+### 4.9.2 Function Response
+
+The computer vision data is sent to the machine learning model for classification. When the machine learning model classifies that there is a yellow flashing light in front, the Arduino slows the motors and the model enters into an alert state.
 
 ## 4.10 Scenario: Encounter STOP Sign
 
@@ -341,7 +339,7 @@ The car encounters an obstacle right in front of it. The car comes to a halt, an
 
 ### 4.12.2 Functional Response
 
-The computer vision data received, along with the data from the distance sensor, alerts the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The machine learning model, along with the data from the distance sensor, alerts the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.13 Scenario: Sudden appearance of an object in front of the car (Case of Emergency Braking)
 
@@ -351,7 +349,7 @@ This scenario is very similar to 4.12, with the difference that the object sudde
 
 ### 4.13.2 Functional Response
 
-The computer vision data received, along with the data from the distance sensor, alerts the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The machine learning model, along with the data from the distance sensor, alerts the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 # 5. Other Nonfunctional Requirements
 
