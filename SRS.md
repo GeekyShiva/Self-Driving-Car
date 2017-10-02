@@ -341,7 +341,7 @@ The car encounters an obstacle right in front of it. The car comes to a halt, an
 
 ### 4.12.2 Functional Response
 
-The machine learning model, along with the data from the distance sensor, alerts the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The computer vision data received, along with the data from the distance sensor, alerts the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 ## 4.13 Scenario: Sudden appearance of an object in front of the car (Case of Emergency Braking)
 
@@ -351,7 +351,7 @@ This scenario is very similar to 4.12, with the difference that the object sudde
 
 ### 4.13.2 Functional Response
 
-The machine learning model, along with the data from the distance sensor, alerts the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+The computer vision data received, along with the data from the distance sensor, alerts the Raspberry Pi of the sudden appearance of an object in front of the car. The Raspberry Pi instructs the Arduino to immediately halt the car's motion, applying reversing motion, if necessary. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
 # 5. Other Nonfunctional Requirements
 
