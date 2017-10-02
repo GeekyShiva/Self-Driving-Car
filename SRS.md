@@ -15,9 +15,9 @@
 ----
 
 #### Product
-   Current Version : 1.0
-   Current Status : Work in Progress
-   Date : 03-10-2017
+  - Current Version : 1.0
+  - Current Status : Work in Progress
+  - Date : 03-10-2017
    
    
 #### Team Project Volantè
