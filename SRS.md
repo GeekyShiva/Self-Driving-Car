@@ -1,8 +1,8 @@
-﻿ <div align=center>
-   <h1>Software Requirements Specification</h1>
-   <h2>Project Volantè</h2>
-   <b> Self Driving Car </b><br />
-   <b> Version <i>1.0</i></b>
+<div align=center>
+  <h1>Software Requirements Specification</h1>
+  <h2>Project Volantè</h2>
+  <b> Self Driving Car </b><br />
+  <b> Version <i>1.0</i></b>
 </div><br /><br />
 
 ----
@@ -15,9 +15,9 @@
 ----
 
 #### Product
-    Current Version : 1.0
-    Current Status : Work in Progress
-    Date : 28-09-2017
+   Current Version : 1.0
+   Current Status : Work in Progress
+   Date : 28-09-2017
 
 
 # 1. Introduction
@@ -26,7 +26,7 @@
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
-Goal of this project is to make an autonomous self-driving car, capable of manoeuvreing around bends, avoiding obstacles and following traffic signals and road signs.
+Goal of this project is to make an autonomous self-driving car, capable of manoeuvring around bends, avoiding obstacles and following traffic signals and road signs.
 
 The tools used in this project and described in this document are:
 
@@ -90,7 +90,7 @@ Recent developments in machine learning and artificial intelligence, along with 
 | Store | This is the persistence layer of whole system. |
 | Classifier| An algorithm that implements classification, especially in a concrete implementation. |
 | Tags | A label attached to track which gives extra information about it. |
-| GCP | Gooogle Cloud Platform for running the machine learning algorithm |
+| GCP | Google Cloud Platform for running the machine learning algorithm |
 
 # 2 Overall Description
 
@@ -186,14 +186,14 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 * The embedded software system on the Raspberry Pi has the following interfaces:
 
-    1. Camera input using a built-in library in Raspbian OS
-    2. Speed and turn data output to the Arduino using RPi.GPIO library
-    3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
+   1. Camera input using a built-in library in Raspbian OS
+   2. Speed and turn data output to the Arduino using RPi.GPIO library
+   3. Communication with the cloud platform via WiFi using a built-in library in Raspbian OS.
 
 * The embedded software system on the Arduino Uno has the following interfaces:
 
-    1. Direction and speed data input using built-in Arduino libraries
-    2. PWM output to motors using built-in Arduino libraries
+   1. Direction and speed data input using built-in Arduino libraries
+   2. PWM output to motors using built-in Arduino libraries
 
 ## 3.4 Communication Interfaces
 
@@ -231,17 +231,49 @@ There is a clear, straight road in front of the car. The car accelerates straigh
 
 The machine learning model classifies the path in front of the car to be a clear, straight road. The Arduino, in response, runs the motors at their full speed, accelerating the car to its full speed.
 
+## 4.4 Scenario: Encounter inactive traffic signal
+
+### 4.4.1 Description
+
+The car encounters an inactive traffic signal right in front of it on the road. The car decreases it's speed but continues it's motion. Car continues to move at this speed until it has passed the traffic signal, then accelerates and continues its motion with original speed, depending on the environment and the stimulus recieved.
+
+### 4.4.2 Functional Response
+
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of an inactive traffic signal. The Raspberry Pi instructs the Arduino to decrease the car's speed. The Raspberry Pi makes car to move in the decreased speed until it crosses the traffic signal. Once past the traffic signal, Raspberry Pi instructs the Arduino to accelerate and resume it's motion with original speed and waits for the next stimulus.
+
+
+## 4.5 Scenario: Encounter red traffic signal
+
+### 4.5.1 Description
+
+The car encounters a red traffic signal right in front of it on the road. The car comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment and the stimulus recieved.
+
+### 4.5.2 Functional Response
+
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a red traffic signal. The Raspberry Pi instructs the Arduino to halt the car's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
+
+## 4.6 Scenario: Encounter yellow traffic signal
+
+### 4.6.1 Description
+
+The scenario is very similar to 4.5 with the difference that the car encounters a yellow traffic signal right in front of it on the road. The car slowly decreases it's speed and comes to a halt. Reverse motion may be applied, if necessary. Car remains stationary until signal reverts back to green, then resumes its motion, depending on the environment and the stimulus recieved.
+
+### 4.6.2 Functional Response
+
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a yellow traffic signal. The Raspberry Pi instructs the Arduino to slowly decrease the car's speed and halt the it's motion, applying reversing motion, if necessary. The Raspberry Pi makes car to stay in stationary position as long as traffic signal is not green. Once green, Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
+
 ## 4.11 Scenario: Encounter GO sign
 
 ### 4.11.1 Description
 
-The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment.
+The car encounters a GO sign board in front of it. The car comes to a halt, waits for a timeout, then resumes its motion, depending on the environment and the stimulus recieved.
 
 ### 4.11.2 Functional Response
 
-The machine learning model alerts the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
+The computer vision data recived post processing results in alerting the Raspberry Pi of the presence of a GO sign. The Raspberry Pi instructs the Arduino to halt the car's motion. The Raspberry Pi waits for a fixed timeout, before instructing the Arduino to accelerate and waits for the next stimulus.
 
-## 4.12 Scenario: Encounter obstacle
+## 4.12 Scenario: Encounter obstacle (Case of Normal Braking)
 
 ### 4.12.1 Description
 
@@ -251,11 +283,11 @@ The car encounters an obstacle right in front of it. The car comes to a halt, an
 
 The machine learning model, along with the data from the distance sensor, alert the Raspberry Pi of the presence of an obstacle. The Raspberry Pi instructs the Arduino to halt the car's motion. The car remains stationary so long as the obstacle is present. Once cleared, the Raspberry Pi instructs the Arduino to accelerate and waits for the next stimulus.
 
-## 4.13 Scenario: Sudden appearance of an object in front of the car
+## 4.13 Scenario: Sudden appearance of an object in front of the car (Case of Emergency Braking)
 
 ### 4.13.1 Description
 
-This scenario is very similiar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
+This scenario is very similar to 4.12, with the difference that the object suddenly pops in front of the car, without any warning whatsoever. The car attempts an immediate halt. Reverse motion may be applied, if necessary. Until the obstacle is cleared, the car remains stationary, post which it resumes normal operation.
 
 ### 4.13.2 Functional Response
 
@@ -280,6 +312,8 @@ The machine learning model, along with the data from the distance sensor, alert 
 * Scalability: TBD
 
 * Typical throughput required: TBD
+
+Please Note:  _All **TBD** points are kept under check and will only be updated once we get a clearer response and valid as well as computable data to determine the conditions_  
 
 ## 5.2 Safety Requirements
 
