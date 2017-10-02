@@ -205,6 +205,11 @@ The in-dash systems, apart from providing entertainment features and vital infor
 
 # 4. System Features
 
+Following is the use case diagram for the self-driving car
+
+![al](https://github.com/falcon1996/FordMotors-SelfDrivingCar/blob/master/Images/car.jpg)
+
+
 | Use Case Title | Description |
 | --- | --- |
 | Clear straight road | The road in front of the car is straight and clear. |
