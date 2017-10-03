@@ -15,10 +15,18 @@
 ----
 
 #### Product
-   Current Version : 1.0
-   Current Status : Work in Progress
-   Date : 28-09-2017
+  - Current Version : 1.0
+  - Current Status : Work in Progress
+  - Date : 03-10-2017
+   
+   
+#### Team Project Volantè
 
+- **Dhruv Parashar**  U101115FCS082
+- **Shivang Shekhar**  U101115FCS148
+- **Sudhanshu Gupta**  U101115FCS160
+- **Yash Deepak Vaidya**  U101115FCS182
+- **Tanmay Eknath Patil**  U101115FCS164
 
 # 1. Introduction
 
@@ -204,6 +212,12 @@ The in-dash systems, apart from providing entertainment features and vital infor
 * The communication interface between Arduino Uno and the car motors is a non-standard PWM interface.
 
 # 4. System Features
+
+Following is the use case diagram for the self-driving car
+
+![al](https://github.com/falcon1996/FordMotors-SelfDrivingCar/blob/master/Images/car.jpg)
+
+[PDF of use case diagram](https://github.com/falcon1996/FordMotors-SelfDrivingCar/blob/master/File/car.pdf)
 
 | Use Case Title | Description |
 | --- | --- |
