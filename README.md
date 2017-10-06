@@ -1,4 +1,35 @@
-**** This file is not updated please refer SRS.md ****
+**** This file will be updated soon please refer SRS.md ****
+
+<div align=center>
+  <h1>Ford Motors Self-Driving Car</h1>
+  <h2>Project Volantè</h2>
+  <b> Self Driving Car </b><br />
+  <b> Version <i>1.0</i></b>
+</div><br /><br />
+
+
+##### Product : Project Volantè [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+##### Description : Self driving RC Car Project
+##### Status : Waiting for Review
+##### Development Status  : design and developement phase
+
+----
+
+#### Product
+  - Current Version : 1.0
+  - Current Status : Work in Progress
+  - Date : 03-10-2017
+   
+   
+#### Team Project Volantè
+
+- **Dhruv Parashar**  U101115FCS082
+- **Shivang Shekhar**  U101115FCS148
+- **Sudhanshu Gupta**  U101115FCS160
+- **Yash Deepak Vaidya**  U101115FCS182
+- **Tanmay Eknath Patil**  U101115FCS164
+
+
 
 # FordMotors-SelfDrivingCar
 This repository is for self driving car project for Ford Motors India.
