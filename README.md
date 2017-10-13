@@ -112,3 +112,19 @@ Recent developments in machine learning and artificial intelligence along with t
 # 2. Overall Description
 
 ## 2.1 Product Perspective
+This system consists of following components:
+
+* RC Car: analogous to real-world car and tries to mimic it
+* Machine Learning Model: makes decisions as to how the car should move
+* Arduino and Raspberry Pi: along with motors, form the car’s underlying hardware
+* PiCam: collects visual data
+* Ultrasonic Sensor (HC - SR04): collects distance data
+
+**RC Car** acts as an analog to the real world car with basic motion capabilities. It is battery operated.
+
+The **Machine Learning Model** guides the car in the environment based on the data set on which it is trained. The model uses neural networks as the underlying learning framework.
+
+**Arduino Uno** controls the actual car’s hardware. It runs the car’s motors and collects distance from the HC-SR04 ultrasonic sensor. This data is then sent to the Raspberry Pi for processing.
+
+**Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
+
