@@ -132,3 +132,9 @@ The design has been made clear using class diagrams and sequence diagrams.
      * **Machine Learning API:** This API enables the Raspberry Pi to communicate with the machine learning algorithm running in the cloud. It provides support for sending image data and receiving classification information for it.
 
      * **PiCamera Driver:** This software driver is responsible for communicating with PiCamera module and extracting image data from it for use for classification.
+
+## 2.2 Structure and relationships
+
+The structure and hierarchy of the system can be understood from the following structural diagram.
+
+![Structural Diagram](Images/structure.jpg?raw=true)
