@@ -94,3 +94,7 @@ This Software Design Specification also includes:
 * Design decisions and tradeoffs
 
 The design has been made clear using class diagrams and sequence diagrams.
+
+# 2. Conceptual Architecture
+
+![Architecture Diagram](Images/architecture-diagram.jpg?raw=true)
