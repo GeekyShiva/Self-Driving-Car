@@ -98,3 +98,37 @@ The design has been made clear using class diagrams and sequence diagrams.
 # 2. Conceptual Architecture
 
 ![Architecture Diagram](Images/architecture-diagram.jpg?raw=true)
+
+## 2.1 Overview of modules and components
+
+1. Arduino UNO Rev. 3
+
+    * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as the format of the data sent.
+
+    * **Motor Driver:** This software driver is responsible for running the car's motors at the desired speed and direction. It also controls the car's degree and direction of turn.
+
+    * **Ultrasonic Sensor Driver:** This software driver is responsible for running the three ultrasonic sensors attached on to the car. This driver ensures that the distance data is captured every 50ms using a timer interrupt on the Arduino.
+
+2. Car
+
+    * **DC Motor:** These motors are responsible for actually running the car.
+
+    * **Ultrasonic Sensors:** These sensors collect distance data from the front, front-left and front-right sides of the car. These sensors use ultrasonic signals to collect data, which is then sent to the Arduino for processing.
+
+3. Cloud Platform
+
+    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the PiCamera and distance data from the ultrasonic sensors to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
+
+    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm.
+
+4. PiCamera
+
+    The **PiCamera** module will be used to capture 800x600 at 60fps for quick capture and reduced photo size. The PiCamera data is processed by the machine learning algorithm to judge the car's environment.
+
+5. Raspberry Pi 2 Model B
+
+     * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as processes the received data into the required format.
+
+     * **Machine Learning API:** This API enables the Raspberry Pi to communicate with the machine learning algorithm running in the cloud. It provides support for sending image data and receiving classification information for it.
+
+     * **PiCamera Driver:** This software driver is responsible for communicating with PiCamera module and extracting image data from it for use for classification.
