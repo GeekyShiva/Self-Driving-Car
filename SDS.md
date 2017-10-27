@@ -125,7 +125,7 @@ The design has been made clear using class diagrams and sequence diagrams.
 
     The **PiCamera** module will be used to capture 800x600 at 60fps for quick capture and reduced photo size. The PiCamera data is processed by the machine learning algorithm to judge the car's environment.
 
-5. Raspberry Pi 2 Model B
+5. Raspberry Pi 3 Model B
 
      * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as processes the received data into the required format.
 
