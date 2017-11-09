@@ -45,7 +45,7 @@ The hardware used in this project and described in this document are:
 
 * RC Car serving as the actual self-driving car
 * Arduino Uno used for controlling the car speed and turning radius
-* Ultrasonic sensor to detect objects in front of the car
+* Ultrasonic sensors to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
 * PiCamera used for capturing objects in front of the car
 
