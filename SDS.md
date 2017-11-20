@@ -95,31 +95,47 @@ This Software Design Specification also includes:
 
 The design has been made clear using class diagrams and sequence diagrams.
 
-# 5 Design Decisions And Trade offs
+# 2. Conceptual Architecture
 
-## 5.1 Design Decisions
+![Architecture Diagram](Images/architecture-diagram.jpg?raw=true)
 
-This project is coded in C, Python and Java. C is used for Arduino, python is used for Raspberry Pi and GCP and java is used for android application.
+## 2.1 Overview of modules and components
 
-Goggle Cloud Platform
+1. Arduino UNO Rev. 3
 
-	Google Cloud Platform provides the right environment for the deployment of Machine-learning algorithms and models.
-	Its is one of the cheapest and value for money service with good customer support.
+    * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as the format of the data sent.
 
-TensorFlow
+    * **Motor Driver:** This software driver is responsible for running the car's motors at the desired speed and direction. It also controls the car's degree and direction of turn.
 
-	It's a machine learning library for developing and implementing machine learning algorithms.
-	It is a combination of both customizability and simplicity of use.  
+    * **Ultrasonic Sensor Driver:** This software driver is responsible for running the three ultrasonic sensors attached on to the car. This driver ensures that the distance data is captured every 50ms using a timer interrupt on the Arduino.
 
-Arduino
+2. Car
 
-	It is an open sourced micro controller. It is easy to use and simple to understand. It is as an interface between the motors, ultra sound sensor and Raspberry Pi 
+    * **DC Motor:** These motors are responsible for actually running the car.
 
-Raspberry Pi
+    * **Ultrasonic Sensors:** These sensors collect distance data from the front, front-left and front-right sides of the car. These sensors use ultrasonic signals to collect data, which is then sent to the Arduino for processing.
 
-	It is a small form factor micro processor. It provides the right mix for portability and CPU power for the application.
-	It is used for preprocessing the image data and send it to the GCP server.
+3. Cloud Platform
 
-Google Maps
-	
-	They are used for real time tracking of the car and also for navigation.
+    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the PiCamera and distance data from the ultrasonic sensors to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
+
+    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm.
+
+4. PiCamera
+
+    The **PiCamera** module will be used to capture 800x600 at 60fps for quick capture and reduced photo size. The PiCamera data is processed by the machine learning algorithm to judge the car's environment.
+
+5. Raspberry Pi 3 Model B
+
+     * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as processes the received data into the required format.
+
+     * **Machine Learning API:** This API enables the Raspberry Pi to communicate with the machine learning algorithm running in the cloud. It provides support for sending image data and receiving classification information for it.
+
+     * **PiCamera Driver:** This software driver is responsible for communicating with PiCamera module and extracting image data from it for use for classification.
+
+## 2.2 Structure and relationships
+
+The structure and hierarchy of the system can be understood from the following structural diagram.
+
+![Structural Diagram](Images/structure.jpg?raw=true)
+>>>>>>> 719c9d14097a74348a2baa7ad0047f0ae60e70a2
