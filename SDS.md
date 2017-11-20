@@ -139,3 +139,34 @@ The structure and hierarchy of the system can be understood from the following s
 
 ![Structural Diagram](Images/structure.jpg?raw=true)
 >>>>>>> 719c9d14097a74348a2baa7ad0047f0ae60e70a2
+
+# 5 Design Decisions And Trade offs
+
+## 5.1 Design Decisions
+
+This project is coded in C, Python and Java. C is used for Arduino, python is used for Raspberry Pi and GCP and java is used for android application.
+
+Goggle Cloud Platform
+
+  Google Cloud Platform provides the right environment for the deployment of Machine-learning algorithms and models.
+  Its is one of the cheapest and value for money service with good customer support.
+
+TensorFlow
+
+  It's a machine learning library for developing and implementing machine learning algorithms.
+  It is a combination of both customizability and simplicity of use.  
+
+Arduino
+
+  It is an open sourced micro controller. It is easy to use and simple to understand. It is as an interface between the motors, ultra sound sensor and Raspberry Pi 
+
+Raspberry Pi
+
+  It is a small form factor micro processor. It provides the right mix for portability and CPU power for the application.
+  It is used for preprocessing the image data and send it to the GCP server.
+
+Google Maps
+  
+  They are used for real time tracking of the car and also for navigation.
+
+
