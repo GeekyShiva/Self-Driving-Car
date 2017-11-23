@@ -6,7 +6,7 @@
 #define RIGHT_US 7
 
 // Baud rate for UART
-#define BAUD_RATE 115200
+#define BAUD_RATE 9600
 
 // Pins for external speed control input.
 #define SPEED_INPUT2 A0
