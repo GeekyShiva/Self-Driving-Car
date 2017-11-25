@@ -4,19 +4,19 @@ import serial
 ########################
 # Constant declarations
 ########################
-SPEED_DATA_PINS = [22, 24, 26]     # Pins used for speed data output
-TURN_DATA_PINS = [12, 10, 8]       # Pins used for turn data output
-SERIAL_PORT_NAME = "/dev/ttyAMA0"  # Serial port used for distance data input
+SPEED_DATA_PINS = [36, 38, 40]     # Pins used for speed data output
+TURN_DATA_PINS  = [33, 35, 37]     # Pins used for turn data output
+SERIAL_PORT_NAME = "/dev/ttyAMA0"  # Serial port used for distance data input (pins 14 and 15)
 SERIAL_BAUD_RATE = 9600            # Baud rate for the serial port
 SERIAL_DATA_SIZE = 60              # Size (in bytes) of distance data
 
 TURN_LEFT  = True
 TURN_RIGHT = not TURN_LEFT
 MOVE_BACKWARD = True
-MOVE_FORWARD  = not MOVE_FORWARD
+MOVE_FORWARD  = not MOVE_BACKWARD
 
 # global serial port variable
-serial_port = 0
+serial_port = serial.Serial(SERIAL_PORT_NAME)
 
 def init():
     '''
@@ -37,10 +37,6 @@ def init():
     # set up output pins
     for pin in (SPEED_DATA_PINS + TURN_DATA_PINS):
         GPIO.setup(pin, GPIO.OUT)
-
-    # set up input pins
-    for pin in DISTANCE_DATA_PINS:
-        GPIO.setup(pin, GPIO.IN)
     
     # set up serial port
     serial_port = serial.Serial(SERIAL_PORT_NAME)
