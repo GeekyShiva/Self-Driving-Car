@@ -138,9 +138,11 @@ The design has been made clear using class diagrams and sequence diagrams.
 The structure and hierarchy of the system can be understood from the following structural diagram.
 
 ![Structural Diagram](Images/structure.jpg?raw=true)
->>>>>>> 719c9d14097a74348a2baa7ad0047f0ae60e70a2
+
 
 # 3. Logical Architecture
+
+![Class Diagram](Images/class%20diagram.jpg?raw=true)
 
 ## 3.1 Component: Phone
 
