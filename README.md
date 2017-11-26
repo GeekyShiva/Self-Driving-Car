@@ -27,7 +27,7 @@
 - **Shivang Shekhar**  U101115FCS148
 - **Sudhanshu Gupta**  U101115FCS160
 - **Yash Deepak Vaidya**  U101115FCS182
-- **Tanmay Eknath Patil**  U101115FCS164
+- **Tanmay Ekanath Patil**  U101115FCS164
 
 
 

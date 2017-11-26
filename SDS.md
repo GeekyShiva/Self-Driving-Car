@@ -26,7 +26,7 @@
 - **Shivang Shekhar**  U101115FCS148
 - **Sudhanshu Gupta**  U101115FCS160
 - **Yash Deepak Vaidya**  U101115FCS182
-- **Tanmay Eknath Patil**  U101115FCS164
+- **Tanmay Ekanath Patil**  U101115FCS164
 
 # 1. Introduction
 
@@ -139,6 +139,128 @@ The structure and hierarchy of the system can be understood from the following s
 
 ![Structural Diagram](Images/structure.jpg?raw=true)
 >>>>>>> 719c9d14097a74348a2baa7ad0047f0ae60e70a2
+
+# 3. Logical Architecture
+
+## 3.1 Component: Phone
+
+Description: This component as a whole handles functionality related to sending image frames and direction to Google Cloud Storage.
+
+### Class: DirectionsJSONParser
+
+Description: Processes the response from the Google Maps API
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + parse(jObject : JSONObject) :  List<List<HashMap<String,String>>> | jObject: JSON Object from the Google Maps API |  parses the json object obtained from the url  | Receives a JSONObject and returns a list of lists containing latitude and longitude |
+| + decodePoly(encoded : String) : List  | encoded: A string that contains data about multiple lines that are on the road | returns a list with points in the polyline |  Method to decode polyline points|
+
+
+### Class: MapsActivity
+
+Description: It is responsible for App UI changes and for sending image frames and direction to Google Cloud Storage.
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + makeDataForGCP() : void | - | -  | Uses compass data and current location to determine where to turn (Left, Right or None) and the amount to turn in degrees |
+| + sendImageToGCP() : void | - | - |  Sends images obtained from the back camera to Google Cloud Storage|
+| + sendJSONToGCP() : void | - | - |  Sends JSONs obtained from the makeDataForGCP method to Google Cloud Storage|
+| + getDirectionsUrl(origin : LatLng, dest : LatLng) : String | origin : Current Location of the car, dest: Destination set by the user | returns a url as string of the web service |  Builds the url to the web service|
+| + downloadUrl(strUrl : String) : String | strUrl : url of the web service | returns json data as string | A method to download json data from url|
+
+
+
+### Class: Data
+
+Description: This class stores data like current location, compass heading. It then can be used by other classes.
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + getCurrentLocation(): LatLng | - | returns current latitude and longitude of car  | A method to obtain current location of the car|
+| + getDirection() : String | - | returns Left,Right or None |  A method to get the direction where the car has to turn |
+| + getJsonObject() : JSONObject| - | returns a JSONObject | A method to get json object which is to be sent to GCP |
+| + makeJSON() : void | - | - | A method to build a json object |
+| + setCurrentLocation(c : LatLng) : void | c : latitude and longitude of current location | - | A method to store current location of the car|
+| + setDirection(d : String) : void | d : Left,Right or None | - | A method to store the direction where the car has to turn|
+| + setDiffHeading(d : float) : void | d : amount the car has to turn   | - | A method to store the amount of turning that the car has to do |
+
+## 3.2 Component:  Arduino
+
+Description: This component as a whole handles functionality related to movement of car.
+
+### Class : ContactRaspberryPi
+
+Description: This class accepts motion information from Raspberry Pi.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + echoCheck() | - | - | Collects distance data from the current sensor if its ping is complete. |
+| + writeDistanceData() | - | - | Writes distance data to the UART channel. |
+| + initSpeedPins() | - | - | Initializes pins for speed control I/O. |
+| + readSpeedInput() | - | Speed data in the range [0,7] | Reads and returns speed control data. |
+| + writeSpeedData(direction : unsigned int, percent : unsigned int)| direction: Direction of the car's motion <br /> percent: Speed of the car in percentage terms. | - | Configure the speed control motors to run at 'percent' percentage of their capacity in 'direction' direction. |
+| + initTurnPins() | - | - | Initializes pins for turn control I/O. |
+| + readTurnInput() | - | Turn data in the range [0,7]. | Reads and returns turn control data. |
+| + writeTurnData(direction : unsigned int, percent : unsigned int) | direction: Direction of the car's turn. <br /> percent: Degree of the car's turn in percentage terms. | - | Configures the turn motors to turn in 'percent' percentage in 'direction' direction. |
+
+## 3.3 Component: Google Cloud Platform
+
+Description:
+
+### Class : ContactPi
+
+Description:
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + receiveImageAndroid() | | | |
+| + receiveJSONAndroid() | | | |
+| + classifyImage() | | | |
+| + returnImage() | | | |
+
+
+## 3.4 Component: Raspberry Pi
+
+Description:
+
+### Class : CallGCP
+
+Description:
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + road_detected(status : Boolean, signal : String) : String,float,int | | | |
+| + detect_labels_uri(url : String) : Boolean,String | | | |
+
+### Class : CallArduino
+
+Description:
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + init() | | | |
+| + set_turn(direction : String,degree :float) | | | |
+| + set_speed(direction : String,speed : int) | | | |
+| + get_distance() : int,int,int | | | |
+
+
+
+
+### Class : CallAndroid
+
+Description:
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + android_data():int,int | | | |
+| + image_data() | | | |
+
+
+
+
 
 # 5 Design Decisions And Trade offs
 
