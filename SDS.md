@@ -260,7 +260,19 @@ Description:
 | + android_data():int,int | | | |
 | + image_data() | | | |
 
+# 4.0 Reuse and relationships to their products <a name="rartop"></a>
 
+If a project is doing some enhancement work, it requires to look into reuse issues.
+But This project is not doing any enhancement work of existing Software but we are doing enhancement of
+existing concept of a basic music player, which plays music, with the usual user requirements of
+playing previous, next songs, adding and removing songs, and volume control. In addition to that,
+the software will recommend music too, based on what the user is listening.
+We already have many tools doing that, such as Pandora, Spotify, SoundCloud etc. But these services/applications suggest
+music from their existing online libraries, demand an account to be created and also an high speed internet connection to Stream Music.
+
+So, the enhancement this project offers to the user is Recommendation from the user's
+offline collection and New Songs that we think User might like. This requires internet connection
+if the recommendations are not cached. But once cached, it recommends music even when the user is offline.
 
 
 
