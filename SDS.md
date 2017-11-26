@@ -270,8 +270,12 @@ Description: This component retrieves images and JSON urls from GCP containers a
 | + android_data():int,int | - | - | It constantly updates value of directions and degree for the car by retriving values from JSON |
 | + image_data() | - | - | It constantly retrieves images from Google Cloud container and sends them for classification.    |
 
+# 4.0 Reuse and relationships to their products <a name="rartop"></a>
 
+This project is not doing any enhancement work for existing Softwares but we via this project have developed a complete new approach of doing enhancement to existing concept of a Self Driving Car, which performs various actions. In addition to that,the project completely focusses over developing a model based on Cloud Platform and perform all its functions remotely keeping in mind the extensive cost expenditures at scale.
+So, the enhancement in this project offers an approach to build Self Driving cars with minimal usage of *On-Board* hardware and connects various platform technologies like Android, Cloud and Microcontrollers to a distributed processing unit system which functions to offer all the capabilities which have been developed and offered by presently available options like Waymo: Google Self driving Car Project, Bosch Self Driving Car Project and many other. Enhancements like Mobile Vision and Labeling have been kept under further additions to this project as the present platforms in use for the project don't offer complete support and are labelled under experimental.
 
+PS: Infrastructure and cost optimisations are to be looked at while comparing the features and quality with present day contenders.
 
 
 # 5 Design Decisions And Trade offs
