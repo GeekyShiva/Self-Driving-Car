@@ -262,18 +262,10 @@ Description:
 
 # 4.0 Reuse and relationships to their products <a name="rartop"></a>
 
-If a project is doing some enhancement work, it requires to look into reuse issues.
-But This project is not doing any enhancement work of existing Software but we are doing enhancement of
-existing concept of a basic music player, which plays music, with the usual user requirements of
-playing previous, next songs, adding and removing songs, and volume control. In addition to that,
-the software will recommend music too, based on what the user is listening.
-We already have many tools doing that, such as Pandora, Spotify, SoundCloud etc. But these services/applications suggest
-music from their existing online libraries, demand an account to be created and also an high speed internet connection to Stream Music.
+This project is not doing any enhancement work for existing Softwares but we via this project have developed a complete new approach of doing enhancement to existing concept of a Self Driving Car, which performs various actions. In addition to that,the project completely focusses over developing a model based on Cloud Platform and perform all its functions remotely keeping in mind the extensive cost expenditures at scale.
+So, the enhancement in this project offers an approach to build Self Driving cars with minimal usage of *On-Board* hardware and connects various platform technologies like Android, Cloud and Microcontrollers to a distributed processing unit system which functions to offer all the capabilities which have been developed and offered by presently available options like Waymo: Google Self driving Car Project, Bosch Self Driving Car Project and many other. Enhancements like Mobile Vision and Labeling have been kept under further additions to this project as the present platforms in use for the project don't offer complete support and are labelled under experimental.
 
-So, the enhancement this project offers to the user is Recommendation from the user's
-offline collection and New Songs that we think User might like. This requires internet connection
-if the recommendations are not cached. But once cached, it recommends music even when the user is offline.
-
+PS: Infrastructure and cost optimisations are to be looked at while comparing the features and quality with present day contenders.
 
 
 # 5 Design Decisions And Trade offs
