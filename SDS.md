@@ -26,7 +26,7 @@
 - **Shivang Shekhar**  U101115FCS148
 - **Sudhanshu Gupta**  U101115FCS160
 - **Yash Deepak Vaidya**  U101115FCS182
-- **Tanmay Eknath Patil**  U101115FCS164
+- **Tanmay Ekanath Patil**  U101115FCS164
 
 # 1. Introduction
 
@@ -138,7 +138,145 @@ The design has been made clear using class diagrams and sequence diagrams.
 The structure and hierarchy of the system can be understood from the following structural diagram.
 
 ![Structural Diagram](Images/structure.jpg?raw=true)
->>>>>>> 719c9d14097a74348a2baa7ad0047f0ae60e70a2
+
+
+# 3. Logical Architecture
+
+# Class Diagram 
+
+![Class Diagram](Images/class%20diagram.jpg?raw=true)
+
+# Sequence Diagram
+![Design Diagram](Images/designdoc.jpg?raw=true)
+
+## 3.1 Component: Phone
+![Phone](Images/phone.PNG?raw=true)
+
+Description: This component as a whole handles functionality related to sending image frames and direction to Google Cloud Storage.
+
+### Class: DirectionsJSONParser
+
+Description: Processes the response from the Google Maps API
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + parse(jObject : JSONObject) :  List<List<HashMap<String,String>>> | jObject: JSON Object from the Google Maps API |  parses the json object obtained from the url  | Receives a JSONObject and returns a list of lists containing latitude and longitude |
+| + decodePoly(encoded : String) : List  | encoded: A string that contains data about multiple lines that are on the road | returns a list with points in the polyline |  Method to decode polyline points|
+
+
+### Class: MapsActivity
+
+Description: It is responsible for App UI changes and for sending image frames and direction to Google Cloud Storage.
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + makeDataForGCP() : void | - | -  | Uses compass data and current location to determine where to turn (Left, Right or None) and the amount to turn in degrees |
+| + sendImageToGCP() : void | - | - |  Sends images obtained from the back camera to Google Cloud Storage|
+| + sendJSONToGCP() : void | - | - |  Sends JSONs obtained from the makeDataForGCP method to Google Cloud Storage|
+| + getDirectionsUrl(origin : LatLng, dest : LatLng) : String | origin : Current Location of the car, dest: Destination set by the user | returns a url as string of the web service |  Builds the url to the web service|
+| + downloadUrl(strUrl : String) : String | strUrl : url of the web service | returns json data as string | A method to download json data from url|
+
+
+
+### Class: Data
+
+Description: This class stores data like current location, compass heading. It then can be used by other classes.
+
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + getCurrentLocation(): LatLng | - | returns current latitude and longitude of car  | A method to obtain current location of the car|
+| + getDirection() : String | - | returns Left,Right or None |  A method to get the direction where the car has to turn |
+| + getJsonObject() : JSONObject| - | returns a JSONObject | A method to get json object which is to be sent to GCP |
+| + makeJSON() : void | - | - | A method to build a json object |
+| + setCurrentLocation(c : LatLng) : void | c : latitude and longitude of current location | - | A method to store current location of the car|
+| + setDirection(d : String) : void | d : Left,Right or None | - | A method to store the direction where the car has to turn|
+| + setDiffHeading(d : float) : void | d : amount the car has to turn   | - | A method to store the amount of turning that the car has to do |
+
+## 3.2 Component:  Arduino
+![Arduino](Images/arduino.PNG?raw=true)
+
+Description: This component as a whole handles functionality related to movement of car.
+
+### Class : ContactRaspberryPi
+
+Description: This class accepts motion information from Raspberry Pi.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + echoCheck() | - | - | Collects distance data from the current sensor if its ping is complete. |
+| + writeDistanceData() | - | - | Writes distance data to the UART channel. |
+| + initSpeedPins() | - | - | Initializes pins for speed control I/O. |
+| + readSpeedInput() | - | Speed data in the range [0,7] | Reads and returns speed control data. |
+| + writeSpeedData(direction : unsigned int, percent : unsigned int)| direction: Direction of the car's motion <br /> percent: Speed of the car in percentage terms. | - | Configure the speed control motors to run at 'percent' percentage of their capacity in 'direction' direction. |
+| + initTurnPins() | - | - | Initializes pins for turn control I/O. |
+| + readTurnInput() | - | Turn data in the range [0,7]. | Reads and returns turn control data. |
+| + writeTurnData(direction : unsigned int, percent : unsigned int) | direction: Direction of the car's turn. <br /> percent: Degree of the car's turn in percentage terms. | - | Configures the turn motors to turn in 'percent' percentage in 'direction' direction. |
+
+## 3.3 Component: Google Cloud Platform
+![GCP](Images/GCP.PNG?raw=true)
+
+Description: This component takes images and JSON from Android 
+
+### Class : CallPi
+
+Description: All the ML functionalities and detections like image detection, text detection are take place here.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + receiveImageAndroid() | Images from Android device | -| Recieves Android Image files in GCP container. |
+| + receiveJSONAndroid() | JSON from Android device | -| Recieves Android JSON files in GCP container.|
+| + classifyImage() | Image | - | Classifies the image. |
+| + returnImage() | - | Classified Data  | Returns classified data.|
+
+
+## 3.4 Component: Raspberry Pi
+![Pi](Images/RaspberryPi.PNG?raw=true)
+
+Description: This component acts as a bridge between ML functions and basic driving functionality of the car. It helps to transfer high level abstraction to machine code. 
+
+#### Class : CallGCP
+
+Description: It sends request to data stored in GCP to classify images and detect road which helps for driving assistance. It sends request to data stored in GCP to classify images and detect different labels which helps for driving assistance.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + road_detected(status : Boolean, signal : String) : String,float,int |status:True if road is there, false otherwise.<br />signal: Red, Yellow or Green signal detected.  | Sets direction, speed and degree values for the car. | This method sets values for the direction, degree and speed of the car using status of road and availability of traffic signals. |
+| + detect_labels_uri(url : String) : Boolean,String | url: Takes image's Google Cloud container's url as input. | Returns values based on presence of road and traffic signals. | This method takes in url of images present in Google Cloud Storage's bucket and uses Vision API to classify them, it then uses these results to detect presence of road and traffic signals.  |
+
+### Class : CallArduino
+
+Description: Provides functions for Raspberry Pi to interface with Arduino.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + init() | - | - | Initializes GPIO pins and serial port. |
+| + set_turn(direction : String,degree :float) | direction: Direction of turn <br /> degree: Degree of turn | - | This is used to set the direction and degree of turn. |
+| + set_speed(direction : String,speed : int) | direction: Direction of speed <br /> degree: Degree of acceleration | - | This is used to set the car's speed. |
+| + get_distance() : int,int,int | - | Returns the distance data as a list of ints. | Reads distance data from serial port. |
+
+
+
+
+
+#### Class : CallAndroid
+
+Description: This component retrieves images and JSON urls from GCP containers and sends them for furthur computation.
+
+| function | input | output | description |
+|----------|-------|--------|-------------|
+| + android_data():int,int | - | - | It constantly updates value of directions and degree for the car by retriving values from JSON |
+| + image_data() | - | - | It constantly retrieves images from Google Cloud container and sends them for classification.    |
+
+# 4.0 Reuse and relationships to their products <a name="rartop"></a>
+
+This project is not doing any enhancement work for existing Softwares but we via this project have developed a complete new approach of doing enhancement to existing concept of a Self Driving Car, which performs various actions. In addition to that,the project completely focusses over developing a model based on Cloud Platform and perform all its functions remotely keeping in mind the extensive cost expenditures at scale.
+So, the enhancement in this project offers an approach to build Self Driving cars with minimal usage of *On-Board* hardware and connects various platform technologies like Android, Cloud and Microcontrollers to a distributed processing unit system which functions to offer all the capabilities which have been developed and offered by presently available options like Waymo: Google Self driving Car Project, Bosch Self Driving Car Project and many other. Enhancements like Mobile Vision and Labeling have been kept under further additions to this project as the present platforms in use for the project don't offer complete support and are labelled under experimental.
+
+PS: Infrastructure and cost optimisations are to be looked at while comparing the features and quality with present day contenders.
+
 
 # 5 Design Decisions And Trade offs
 
