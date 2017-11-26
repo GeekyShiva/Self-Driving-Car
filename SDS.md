@@ -142,9 +142,15 @@ The structure and hierarchy of the system can be understood from the following s
 
 # 3. Logical Architecture
 
+# Class Diagram 
+
 ![Class Diagram](Images/class%20diagram.jpg?raw=true)
 
+# Sequence Diagram
+![Design Diagram](Images/designdoc.jpg?raw=true)
+
 ## 3.1 Component: Phone
+![Phone](Images/phone.png?raw=true)
 
 Description: This component as a whole handles functionality related to sending image frames and direction to Google Cloud Storage.
 
@@ -190,6 +196,7 @@ Description: This class stores data like current location, compass heading. It t
 | + setDiffHeading(d : float) : void | d : amount the car has to turn   | - | A method to store the amount of turning that the car has to do |
 
 ## 3.2 Component:  Arduino
+![Arduino](Images/arduino.png?raw=true)
 
 Description: This component as a whole handles functionality related to movement of car.
 
@@ -209,56 +216,59 @@ Description: This class accepts motion information from Raspberry Pi.
 | + writeTurnData(direction : unsigned int, percent : unsigned int) | direction: Direction of the car's turn. <br /> percent: Degree of the car's turn in percentage terms. | - | Configures the turn motors to turn in 'percent' percentage in 'direction' direction. |
 
 ## 3.3 Component: Google Cloud Platform
+![GCP](Images/GCP.png?raw=true)
 
-Description:
+Description: This component takes images and JSON from Android 
 
-### Class : ContactPi
+### Class : CallPi
 
-Description:
+Description: All the ML functionalities and detections like image detection, text detection are take place here.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + receiveImageAndroid() | | | |
-| + receiveJSONAndroid() | | | |
-| + classifyImage() | | | |
-| + returnImage() | | | |
+| + receiveImageAndroid() | Images from Android device | -| Recieves Android Image files in GCP container. |
+| + receiveJSONAndroid() | JSON from Android device | -| Recieves Android JSON files in GCP container.|
+| + classifyImage() | Image | - | Classifies the image. |
+| + returnImage() | - | Classified Data  | Returns classified data.|
 
 
 ## 3.4 Component: Raspberry Pi
+![Pi](Images/RaspberryPi.png?raw=true)
 
-Description:
+Description: This component acts as a bridge between ML functions and basic driving functionality of the car. It helps to transfer high level abstraction to machine code. 
 
-### Class : CallGCP
+#### Class : CallGCP
 
-Description:
+Description: It sends request to data stored in GCP to classify images and detect road which helps for driving assistance. It sends request to data stored in GCP to classify images and detect different labels which helps for driving assistance.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + road_detected(status : Boolean, signal : String) : String,float,int | | | |
-| + detect_labels_uri(url : String) : Boolean,String | | | |
+| + road_detected(status : Boolean, signal : String) : String,float,int |status:True if road is there, false otherwise.<br />signal: Red, Yellow or Green signal detected.  | Sets direction, speed and degree values for the car. | This method sets values for the direction, degree and speed of the car using status of road and availability of traffic signals. |
+| + detect_labels_uri(url : String) : Boolean,String | url: Takes image's Google Cloud container's url as input. | Returns values based on presence of road and traffic signals. | This method takes in url of images present in Google Cloud Storage's bucket and uses Vision API to classify them, it then uses these results to detect presence of road and traffic signals.  |
 
 ### Class : CallArduino
 
-Description:
+Description: Provides functions for Raspberry Pi to interface with Arduino.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + init() | | | |
-| + set_turn(direction : String,degree :float) | | | |
-| + set_speed(direction : String,speed : int) | | | |
-| + get_distance() : int,int,int | | | |
+| + init() | - | - | Initializes GPIO pins and serial port. |
+| + set_turn(direction : String,degree :float) | direction: Direction of turn <br /> degree: Degree of turn | - | This is used to set the direction and degree of turn. |
+| + set_speed(direction : String,speed : int) | direction: Direction of speed <br /> degree: Degree of acceleration | - | This is used to set the car's speed. |
+| + get_distance() : int,int,int | - | Returns the distance data as a list of ints. | Reads distance data from serial port. |
 
 
 
 
-### Class : CallAndroid
 
-Description:
+#### Class : CallAndroid
+
+Description: This component retrieves images and JSON urls from GCP containers and sends them for furthur computation.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + android_data():int,int | | | |
-| + image_data() | | | |
+| + android_data():int,int | - | - | It constantly updates value of directions and degree for the car by retriving values from JSON |
+| + image_data() | - | - | It constantly retrieves images from Google Cloud container and sends them for classification.    |
 
 
 
