@@ -6,7 +6,13 @@
 #define RIGHT_US 7
 
 // Baud rate for UART
-#define BAUD_RATE 115200
+#define BAUD_RATE 9600
+
+// Interval between each sensor's ping
+#define PING_INTERVAL 33
+
+// Maximum distance to sense
+#define MAX_DISTANCE 200
 
 // Pins for external speed control input.
 #define SPEED_INPUT2 A0
@@ -14,8 +20,9 @@
 #define SPEED_INPUT0 A2
 
 // Pins for controlling the acceleration motors.
-#define SPEED_MOTOR_PIN1 11
-#define SPEED_MOTOR_PIN0 10
+#define SPEED_MOTOR_PIN2 11
+#define SPEED_MOTOR_PIN1 10
+#define SPEED_MOTOR_PIN0 9
 
 // Pins for external turn control input.
 #define TURN_INPUT2 A3
@@ -23,8 +30,9 @@
 #define TURN_INPUT0 A5
 
 // Pins for controlling the turn motors.
-#define TURN_MOTOR_PIN1 6
-#define TURN_MOTOR_PIN0 5
+#define TURN_MOTOR_PIN2 6
+#define TURN_MOTOR_PIN1 5
+#define TURN_MOTOR_PIN0 4
 
 // Number of distance sensors.
 #define NUM_SENSORS 3
@@ -49,13 +57,13 @@ unsigned int readTurnInput();
 void writeTurnData(unsigned int direction, unsigned int percent);
 
 
-NewPing sonar[NUM_SENSORS] = {{FRONT_US, FRONT_US, 200},   // sonar[0] => front sensor
-                              {LEFT_US,  LEFT_US,  200},   // sonar[1] => left  sensor
-                              {RIGHT_US, RIGHT_US, 200}};  // sonar[2] => right sensor
-unsigned int pingSpeed = 50;      // Time (in milliseconds) between every distance sensor ping.
-unsigned long pingTimer;          // Holds the next ping time (in milliseconds).
-unsigned long data[NUM_SENSORS];  // Holds the ping sensor data (in cm).
-unsigned int currentSensor;       // Indicates the sensor to collect data from
+NewPing sonar[NUM_SENSORS] = {NewPing(FRONT_US, FRONT_US, MAX_DISTANCE),   // sonar[0] => front sensor
+                              NewPing(LEFT_US,  LEFT_US,  MAX_DISTANCE),   // sonar[1] => left  sensor
+                              NewPing(RIGHT_US, RIGHT_US, MAX_DISTANCE)};  // sonar[2] => right sensor
+unsigned int pingSpeed = 50;           // Time (in milliseconds) between every distance sensor ping.
+unsigned long pingTimer[NUM_SENSORS];  // Holds the next ping time (in milliseconds).
+unsigned long data[NUM_SENSORS];       // Holds the ping sensor data (in cm).
+unsigned int currentSensor = 0;        // Indicates the sensor to collect data from
 
 
 /**
@@ -76,7 +84,10 @@ void setup() {
     data[i] = 0;
   }
 
-  pingTimer = millis();  // Start ultrasonic sensor timer.
+  pingTimer[0] = millis() + 75;                // First ping starts at 75ms
+  for (uint8_t i = 1; i < NUM_SENSORS; i++) {  // Set the starting time for each sensor.
+    pingTimer[i] = pingTimer[i - 1] + PING_INTERVAL;
+  }
 }
 
 /**
@@ -93,15 +104,17 @@ void setup() {
  */
 void loop() {
   // update distance data output
-  if (millis() >= pingTimer) {    // pingSpeed milliseconds since last ping, do another ping.
-    pingTimer += pingSpeed;       // Set the next ping time.
-
-    // query each sensor sequentially
-    for (currentSensor = 0; currentSensor < NUM_SENSORS; ++currentSensor) {
-      sonar[currentSensor].ping_timer(echoCheck);
+  for (uint8_t i = 0; i < NUM_SENSORS; i++) {
+    if (millis() >= pingTimer[i]) {  // Is it this sensor's time to ping?
+      pingTimer[i] += PING_INTERVAL * NUM_SENSORS;  // Set next time this sensor will be pinged.
+      if (i == 0 && currentSensor == NUM_SENSORS - 1) {
+        writeDistanceData();  // Update UART output
+      }
+      sonar[currentSensor].timer_stop();           // Cancel the previous timer
+      currentSensor = i;                           // Sensor being accessed
+      data[currentSensor] = 0;                     // Make distance zero in case there's no ping echo for this sensor
+      sonar[currentSensor].ping_timer(echoCheck);  // Arm Timer2 for ping
     }
-
-    writeDistanceData();  // update UART output
   }
 
   // update speed motor output
@@ -153,8 +166,15 @@ void echoCheck() {
  */
 void writeDistanceData() {
   for (int i = 0; i < NUM_SENSORS; ++i) {
+    Serial.print(data[i]);
+    Serial.print("\t");
+  }
+  Serial.println();
+  /*
+  for (int i = 0; i < NUM_SENSORS; ++i) {
     Serial.println(data[i]);
   }
+  */
 }
 
 /**
@@ -167,6 +187,7 @@ void initSpeedPins() {
   pinMode(SPEED_INPUT2, INPUT);
   pinMode(SPEED_INPUT1, INPUT);
   pinMode(SPEED_INPUT0, INPUT);
+  pinMode(SPEED_MOTOR_PIN2, OUTPUT);
   pinMode(SPEED_MOTOR_PIN1, OUTPUT);
   pinMode(SPEED_MOTOR_PIN0, OUTPUT);
 }
@@ -209,25 +230,26 @@ unsigned int readSpeedInput() {
  *   2. 0 <= percent <= 100.
  * 
  * Requires the following pins to be not set to INPUT mode:
+ *   SPEED_MOTOR_PIN2
  *   SPEED_MOTOR_PIN1
  *   SPEED_MOTOR_PIN0
  * 
  * Input: direction : Direction of the car's motion
- *        percent :   Speed of the car in percentage terms.
+ *        percent   : Speed of the car in percentage terms.
  * Output: None
  */
 void writeSpeedData(unsigned int direction, unsigned int percent) {
-  switch (direction) {
-    case MOVE_FORWARD: analogWrite(SPEED_MOTOR_PIN1, percent * 2.55);
-                       analogWrite(SPEED_MOTOR_PIN0, 0);
-                       break;
-    
-    case MOVE_BACKWARD: analogWrite(SPEED_MOTOR_PIN1, 0);
-                        analogWrite(SPEED_MOTOR_PIN0, percent * 2.55);
-                        break;
+  analogWrite(SPEED_MOTOR_PIN2, percent * 2.55);
 
-    default: analogWrite(SPEED_MOTOR_PIN1, 0);
-             analogWrite(SPEED_MOTOR_PIN0, 0);
+  switch (direction) {
+    case MOVE_FORWARD: digitalWrite(SPEED_MOTOR_PIN1, HIGH);
+                       digitalWrite(SPEED_MOTOR_PIN0, LOW);
+                       break;
+    case MOVE_BACKWARD: digitalWrite(SPEED_MOTOR_PIN1, LOW);
+                        digitalWrite(SPEED_MOTOR_PIN0, HIGH);
+                        break;
+    default: digitalWrite(SPEED_MOTOR_PIN1, LOW);
+             digitalWrite(SPEED_MOTOR_PIN0, LOW);
   }
 }
 
@@ -241,6 +263,7 @@ void initTurnPins() {
   pinMode(TURN_INPUT2, INPUT);
   pinMode(TURN_INPUT1, INPUT);
   pinMode(TURN_INPUT0, INPUT);
+  pinMode(TURN_MOTOR_PIN2, OUTPUT);
   pinMode(TURN_MOTOR_PIN1, OUTPUT);
   pinMode(TURN_MOTOR_PIN0, OUTPUT);
 }
@@ -283,6 +306,7 @@ unsigned int readTurnInput() {
  *   2. 0 <= percent <= 100
  * 
  * Requires the following pins to be not set to INPUT mode:
+ *   TURN_MOTOR_PIN2
  *   TURN_MOTOR_PIN1
  *   TURN_MOTOR_PIN0
  * 
@@ -291,17 +315,17 @@ unsigned int readTurnInput() {
  * Output: None
  */
 void writeTurnData(unsigned int direction, unsigned int percent) {
+  analogWrite(TURN_MOTOR_PIN2, percent * 2.55);
+  
   switch (direction) {
-    case TURN_LEFT: analogWrite(TURN_MOTOR_PIN1, percent * 2.55);
-                    analogWrite(TURN_MOTOR_PIN0, 0);
+    case TURN_LEFT: digitalWrite(TURN_MOTOR_PIN1, HIGH);
+                    digitalWrite(TURN_MOTOR_PIN0, LOW);
                     break;
-    
-    case TURN_RIGHT: analogWrite(TURN_MOTOR_PIN1, 0);
-                     analogWrite(TURN_MOTOR_PIN0, percent * 2.55);
+    case TURN_RIGHT: digitalWrite(TURN_MOTOR_PIN1, LOW);
+                     digitalWrite(TURN_MOTOR_PIN0, HIGH);
                      break;
-
-    default: analogWrite(TURN_MOTOR_PIN1, 0);
-             analogWrite(TURN_MOTOR_PIN0, 0);
+    default: digitalWrite(TURN_MOTOR_PIN1, LOW);
+             digitalWrite(TURN_MOTOR_PIN0, LOW);
   }
 }
 

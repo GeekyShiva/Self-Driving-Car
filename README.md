@@ -1,4 +1,4 @@
-**** This file will be updated soon please refer SRS.md ****
+**** This file yet to be updated soon please refer SRS.md meanwhile ****
 
 <div align=center>
   <h1>Ford Motors Self-Driving Car</h1>
