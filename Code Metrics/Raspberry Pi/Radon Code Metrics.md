@@ -1,12 +1,3 @@
-<div align=center>
-  <h1>Code Metrices</h1>
-  <h2>Project Volantè</h2>
-  <b> Self Driving Car </b><br />
-  <b> Version <i>1.0</i></b><br />
-  <b> Code Metrics </b><br />
-</div><br /><br />
-
-
 # Cyclomatic Complexity
 
 ## Legend
