@@ -89,7 +89,7 @@ if we are moving down the correct path in order to fulfil their expectations.
 - Shivank Shekhar (B.Tech. 3nd year student)
 - Tanmay Eknath Patil (B.Tech. 3nd year student)
 
-**Meeting type**: In person
+**Meeting type**: Skype
 
 ### Agenda Items
 
@@ -113,32 +113,33 @@ if we are moving down the correct path in order to fulfil their expectations.
 
 **Communication Medium**: Hindi/English
 
-**Date**: November 18,2016
+**Date**: November 20, 2017
 
 **Time**: 5:00 p.m.
 
 **Location**: 3rd Floor, Building C, 10, DLF Cyber City Road, DLF Phase 2, Sector 24, Gurugram, Haryana 122022
 
-**Meeting Duration**: 15 minutes
+**Meeting Duration**: 1 hour
 
 **Attendees**: 
 
-1. Shreyash Soni (Btech. 3rd year ECE student)
-2. Vanshika Rohatgi (Btech. 2nd year ECE student)
-3. Javin Juneja (Btech. 2nd year CSE student)
-4. Sakshi Jain (Btech. 3rd year CSE student)
+1. Yash Deepak Vaidya (B.Tech. 3rd year CSE student)
+2. Tanmay Eknath Patil (B.Tech. 3nd year CSE student)
+3. Dhruv Parashar (B.Tech. 3nd year CSE student)
+4. Sudhanshu Gupta (B.Tech. 3rd year CSE student)
+5. Shivank Shekhar (B.Tech. 3rd year CSE student)
 
 **Meeting type**: In person.
 
 ### Agenda Items
 
-1. To show the final demo of our software to the customers and make them try it themselves.
-2. To ask them if they are satisfied with our software, that is, if they find it useful or not.
+1. To show the final demo of our prototype to the customer.
+2. To ask them if they are satisfied with our prototype , that is, if they find it useful or not.
 3. To ask them if they want some feature/features to be modified or added.
 
 ### Decisions
 
-1. The customers seem to be satisfied with the product.
-2. A feature for creating multiple playlists has been considered and will be implemented in future.
+1. The customers seem to be satisfied with the prototype.
+2. Adding LiDar has been considered.
 3. Some minor improvements in the UI are to be done.
-4. Feedback forms have been circulated to the customers.
+4. Feedback forms have been circulated to the customer.
