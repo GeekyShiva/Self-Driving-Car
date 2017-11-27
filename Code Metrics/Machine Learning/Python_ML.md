@@ -43,9 +43,9 @@
 
 The equation `SLOC + Multi + Single comments + Blank = LOC` should always hold. Additionally, comment stats are calculated:
 
-- C % L: the ratio between number of comment lines and LOC, expressed as a percentage;
-- C % S: the ratio between number of comment lines and SLOC, expressed as a percentage;
-- C + M % L: the ratio between number of comment and multiline strings lines and LOC, expressed as a percentage.
+- `C % L`: the ratio between number of comment lines and LOC, expressed as a percentage;
+- `C % S`: the ratio between number of comment lines and SLOC, expressed as a percentage;
+- `C + M % L`: the ratio between number of comment and multiline strings lines and LOC, expressed as a percentage.
 
 ### Cyclomatic Complexity
 
