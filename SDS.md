@@ -47,7 +47,7 @@ The hardware used in this project and described in this document are:
 * Arduino Uno used for controlling the car speed and turning radius
 * Ultrasonic sensors to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
-* PiCamera used for capturing objects in front of the car
+* Android device used for collecting camera, GPS and compass information.
 
 ## 1.2 Scope of the development project
 
@@ -101,37 +101,37 @@ The design has been made clear using class diagrams and sequence diagrams.
 
 ## 2.1 Overview of modules and components
 
-1. Arduino UNO Rev. 3
+1. Android Device
 
-    * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as the format of the data sent.
+    * **Camera:** The camera module is responsible for capturing what is right in front of the car. This camera data is processed by the machine learning algorithm to judge the car's environment.
+
+    * **GPS:** The GPS module is used to capture the car's current location and help it navigate through the location points provided by Google Places API.
+
+    * **Compass:** The compass module provides the car's current heading direction and helps correct car's direction of motion.
+
+2. Arduino UNO Rev. 3
+
+    * **GPIO Driver:** This software driver is responsible for parallel communication with Raspberry Pi. It is used for receiving speed and turn data from Raspberry Pi, and for running the motors at desired speed and direction.
 
     * **Motor Driver:** This software driver is responsible for running the car's motors at the desired speed and direction. It also controls the car's degree and direction of turn.
 
-    * **Ultrasonic Sensor Driver:** This software driver is responsible for running the three ultrasonic sensors attached on to the car. This driver ensures that the distance data is captured every 50ms using a timer interrupt on the Arduino.
-
-2. Car
+3. Car
 
     * **DC Motor:** These motors are responsible for actually running the car.
 
-    * **Ultrasonic Sensors:** These sensors collect distance data from the front, front-left and front-right sides of the car. These sensors use ultrasonic signals to collect data, which is then sent to the Arduino for processing.
+4. Cloud Platform
 
-3. Cloud Platform
+    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the Android device to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
 
-    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the PiCamera and distance data from the ultrasonic sensors to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
-
-    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm.
-
-4. PiCamera
-
-    The **PiCamera** module will be used to capture 800x600 at 60fps for quick capture and reduced photo size. The PiCamera data is processed by the machine learning algorithm to judge the car's environment.
+    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm. It is also used for storing location and heading information from the Android device.
 
 5. Raspberry Pi 3 Model B
 
-     * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as processes the received data into the required format.
+     * **Car Driver:** This software module is responsible for actually running the car via Arduino. It takes classification and correction data from GCP and sends required signals to the Arduino to drive the car.
 
-     * **Machine Learning API:** This API enables the Raspberry Pi to communicate with the machine learning algorithm running in the cloud. It provides support for sending image data and receiving classification information for it.
+     * **Cloud API:** This API is used by the Raspberry Pi to communicate with the cloud platform.
 
-     * **PiCamera Driver:** This software driver is responsible for communicating with PiCamera module and extracting image data from it for use for classification.
+     * **GPIO Driver:** This software driver is responsible for parallel communication with Arduino. It is used for sending speed and turn data to the Arduino, which then actuates the car's motors.
 
 ## 2.2 Structure and relationships
 
@@ -142,9 +142,15 @@ The structure and hierarchy of the system can be understood from the following s
 
 # 3. Logical Architecture
 
+# Class Diagram 
+
 ![Class Diagram](Images/class%20diagram.jpg?raw=true)
 
+# Sequence Diagram
+![Design Diagram](Images/designdoc.jpg?raw=true)
+
 ## 3.1 Component: Phone
+![Phone](Images/phone.PNG?raw=true)
 
 Description: This component as a whole handles functionality related to sending image frames and direction to Google Cloud Storage.
 
@@ -190,6 +196,7 @@ Description: This class stores data like current location, compass heading. It t
 | + setDiffHeading(d : float) : void | d : amount the car has to turn   | - | A method to store the amount of turning that the car has to do |
 
 ## 3.2 Component:  Arduino
+![Arduino](Images/arduino.PNG?raw=true)
 
 Description: This component as a whole handles functionality related to movement of car.
 
@@ -209,71 +216,66 @@ Description: This class accepts motion information from Raspberry Pi.
 | + writeTurnData(direction : unsigned int, percent : unsigned int) | direction: Direction of the car's turn. <br /> percent: Degree of the car's turn in percentage terms. | - | Configures the turn motors to turn in 'percent' percentage in 'direction' direction. |
 
 ## 3.3 Component: Google Cloud Platform
+![GCP](Images/GCP.PNG?raw=true)
 
-Description:
+Description: This component takes images and JSON from Android 
 
-### Class : ContactPi
+### Class : CallPi
 
-Description:
+Description: All the ML functionalities and detections like image detection, text detection are take place here.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + receiveImageAndroid() | | | |
-| + receiveJSONAndroid() | | | |
-| + classifyImage() | | | |
-| + returnImage() | | | |
+| + receiveImageAndroid() | Images from Android device | -| Recieves Android Image files in GCP container. |
+| + receiveJSONAndroid() | JSON from Android device | -| Recieves Android JSON files in GCP container.|
+| + classifyImage() | Image | - | Classifies the image. |
+| + returnImage() | - | Classified Data  | Returns classified data.|
 
 
 ## 3.4 Component: Raspberry Pi
+![Pi](Images/RaspberryPi.PNG?raw=true)
 
-Description:
+Description: This component acts as a bridge between ML functions and basic driving functionality of the car. It helps to transfer high level abstraction to machine code. 
 
-### Class : CallGCP
+#### Class : CallGCP
 
-Description:
+Description: It sends request to data stored in GCP to classify images and detect road which helps for driving assistance. It sends request to data stored in GCP to classify images and detect different labels which helps for driving assistance.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + road_detected(status : Boolean, signal : String) : String,float,int | | | |
-| + detect_labels_uri(url : String) : Boolean,String | | | |
+| + road_detected(status : Boolean, signal : String) : String,float,int |status:True if road is there, false otherwise.<br />signal: Red, Yellow or Green signal detected.  | Sets direction, speed and degree values for the car. | This method sets values for the direction, degree and speed of the car using status of road and availability of traffic signals. |
+| + detect_labels_uri(url : String) : Boolean,String | url: Takes image's Google Cloud container's url as input. | Returns values based on presence of road and traffic signals. | This method takes in url of images present in Google Cloud Storage's bucket and uses Vision API to classify them, it then uses these results to detect presence of road and traffic signals.  |
 
 ### Class : CallArduino
 
-Description:
+Description: Provides functions for Raspberry Pi to interface with Arduino.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + init() | | | |
-| + set_turn(direction : String,degree :float) | | | |
-| + set_speed(direction : String,speed : int) | | | |
-| + get_distance() : int,int,int | | | |
+| + init() | - | - | Initializes GPIO pins and serial port. |
+| + set_turn(direction : String,degree :float) | direction: Direction of turn <br /> degree: Degree of turn | - | This is used to set the direction and degree of turn. |
+| + set_speed(direction : String,speed : int) | direction: Direction of speed <br /> degree: Degree of acceleration | - | This is used to set the car's speed. |
+| + get_distance() : int,int,int | - | Returns the distance data as a list of ints. | Reads distance data from serial port. |
 
 
 
 
-### Class : CallAndroid
 
-Description:
+#### Class : CallAndroid
+
+Description: This component retrieves images and JSON urls from GCP containers and sends them for furthur computation.
 
 | function | input | output | description |
 |----------|-------|--------|-------------|
-| + android_data():int,int | | | |
-| + image_data() | | | |
+| + android_data():int,int | - | - | It constantly updates value of directions and degree for the car by retriving values from JSON |
+| + image_data() | - | - | It constantly retrieves images from Google Cloud container and sends them for classification.    |
 
 # 4.0 Reuse and relationships to their products <a name="rartop"></a>
 
-If a project is doing some enhancement work, it requires to look into reuse issues.
-But This project is not doing any enhancement work of existing Software but we are doing enhancement of
-existing concept of a basic music player, which plays music, with the usual user requirements of
-playing previous, next songs, adding and removing songs, and volume control. In addition to that,
-the software will recommend music too, based on what the user is listening.
-We already have many tools doing that, such as Pandora, Spotify, SoundCloud etc. But these services/applications suggest
-music from their existing online libraries, demand an account to be created and also an high speed internet connection to Stream Music.
+This project is not doing any enhancement work for existing Softwares but we via this project have developed a complete new approach of doing enhancement to existing concept of a Self Driving Car, which performs various actions. In addition to that,the project completely focusses over developing a model based on Cloud Platform and perform all its functions remotely keeping in mind the extensive cost expenditures at scale.
+So, the enhancement in this project offers an approach to build Self Driving cars with minimal usage of *On-Board* hardware and connects various platform technologies like Android, Cloud and Microcontrollers to a distributed processing unit system which functions to offer all the capabilities which have been developed and offered by presently available options like Waymo: Google Self driving Car Project, Bosch Self Driving Car Project and many other. Enhancements like Mobile Vision and Labeling have been kept under further additions to this project as the present platforms in use for the project don't offer complete support and are labelled under experimental.
 
-So, the enhancement this project offers to the user is Recommendation from the user's
-offline collection and New Songs that we think User might like. This requires internet connection
-if the recommendations are not cached. But once cached, it recommends music even when the user is offline.
-
+PS: Infrastructure and cost optimisations are to be looked at while comparing the features and quality with present day contenders.
 
 
 # 5 Design Decisions And Trade offs
