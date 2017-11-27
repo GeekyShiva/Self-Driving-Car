@@ -105,7 +105,7 @@ Last but not least, the code is given an overall mark, based on the number and s
 Please follow the below links to know more about our analysis of Raw Metrics, Cyclomatic Complexity and Code Maintainability Index.
 
 
-- [Raw Metrics]()
-- [Cyclomatic Complexity]()
-- [Code Maintaibility Index]()
-- [Code Quality]()
+- [Raw Metrics](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Code%20Metrics/Machine%20Learning/raw_metrics.md)
+- [Cyclomatic Complexity](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Code%20Metrics/Machine%20Learning/cyclomatic.md)
+- [Code Maintaibility Index](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Code%20Metrics/Machine%20Learning/maintain.md)
+- [Code Quality](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Code%20Metrics/Machine%20Learning/Code%20Quality.md)
