@@ -28,7 +28,7 @@
 ## Coverage Report
 
 | Module Covered | Statements | Miss | Cover |
-|---|---|---|---|---|
+|---|---|---|---|
 | **argparse** | 2390  |  95.6  |  94% |
 | **io** | 100 | 12 | 88% |
 | **vision** | source missing | source missing | source missing |
