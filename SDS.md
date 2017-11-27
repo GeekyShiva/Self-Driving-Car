@@ -47,7 +47,7 @@ The hardware used in this project and described in this document are:
 * Arduino Uno used for controlling the car speed and turning radius
 * Ultrasonic sensors to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
-* PiCamera used for capturing objects in front of the car
+* Android device used for collecting camera, GPS and compass information.
 
 ## 1.2 Scope of the development project
 
@@ -101,37 +101,37 @@ The design has been made clear using class diagrams and sequence diagrams.
 
 ## 2.1 Overview of modules and components
 
-1. Arduino UNO Rev. 3
+1. Android Device
 
-    * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as the format of the data sent.
+    * **Camera:** The camera module is responsible for capturing what is right in front of the car. This camera data is processed by the machine learning algorithm to judge the car's environment.
+
+    * **GPS:** The GPS module is used to capture the car's current location and help it navigate through the location points provided by Google Places API.
+
+    * **Compass:** The compass module provides the car's current heading direction and helps correct car's direction of motion.
+
+2. Arduino UNO Rev. 3
+
+    * **GPIO Driver:** This software driver is responsible for parallel communication with Raspberry Pi. It is used for receiving speed and turn data from Raspberry Pi, and for running the motors at desired speed and direction.
 
     * **Motor Driver:** This software driver is responsible for running the car's motors at the desired speed and direction. It also controls the car's degree and direction of turn.
 
-    * **Ultrasonic Sensor Driver:** This software driver is responsible for running the three ultrasonic sensors attached on to the car. This driver ensures that the distance data is captured every 50ms using a timer interrupt on the Arduino.
-
-2. Car
+3. Car
 
     * **DC Motor:** These motors are responsible for actually running the car.
 
-    * **Ultrasonic Sensors:** These sensors collect distance data from the front, front-left and front-right sides of the car. These sensors use ultrasonic signals to collect data, which is then sent to the Arduino for processing.
+4. Cloud Platform
 
-3. Cloud Platform
+    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the Android device to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
 
-    * **Machine Learning Algorithm:** The machine learning algorithm is at the heart of this project. The model processes visual data from the PiCamera and distance data from the ultrasonic sensors to judge the car's environment. This judgement is used by the Raspberry Pi to control the car's motion.
-
-    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm.
-
-4. PiCamera
-
-    The **PiCamera** module will be used to capture 800x600 at 60fps for quick capture and reduced photo size. The PiCamera data is processed by the machine learning algorithm to judge the car's environment.
+    * **Storage:** Apart from the actual machine learning algorithm, the cloud platform also provides with a big and reliable storage space for storing all the training and testing data for the algorithm. It is also used for storing location and heading information from the Android device.
 
 5. Raspberry Pi 3 Model B
 
-     * **Communication Driver:** This software driver is responsible for the UART communication link between the Arduino and Raspberry Pi. It specifies the baud rate as well as processes the received data into the required format.
+     * **Car Driver:** This software module is responsible for actually running the car via Arduino. It takes classification and correction data from GCP and sends required signals to the Arduino to drive the car.
 
-     * **Machine Learning API:** This API enables the Raspberry Pi to communicate with the machine learning algorithm running in the cloud. It provides support for sending image data and receiving classification information for it.
+     * **Cloud API:** This API is used by the Raspberry Pi to communicate with the cloud platform.
 
-     * **PiCamera Driver:** This software driver is responsible for communicating with PiCamera module and extracting image data from it for use for classification.
+     * **GPIO Driver:** This software driver is responsible for parallel communication with Arduino. It is used for sending speed and turn data to the Arduino, which then actuates the car's motors.
 
 ## 2.2 Structure and relationships
 
