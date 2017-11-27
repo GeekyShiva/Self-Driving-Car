@@ -28,8 +28,8 @@ Tested with a required heading in all four quadrants. The required heading must 
 
 ## 2. Integration Testing
 
-| Action| Desired Output |Actual Output |Result |
-|----- | -----| ----|---- |---- |
+| Action| Desired Output |Actual Output |Result|
+|----- | -----| ----|---- |
 |send image to GCP|sending image to GCP|All tasks completed | PASSED|
 | send json to GCP|sending json to GCP |All tasks completed |PASSED | 
 
