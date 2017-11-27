@@ -9,7 +9,7 @@
 - **Sudhanshu Gupta** U101115FCS160
 - **Yash Deepak Vaidya** U101115FCS182
 - **Tanmay Eknath Patil** U101115FCS164
-- **Dhruv Parasher** U101115FCS082
+- **Dhruv Parashar** U101115FCS082
 - **Shivank Shekhar** U101115FCS148
 
 ## Purpose
@@ -84,7 +84,7 @@ if we are moving down the correct path in order to fulfil their expectations.
 
 **Attendees**:
 - Yash Deepak Vaidya (B.Tech. 3nd year student)
-- Dhruv Parasher (B.Tech. 3nd year student)
+- Dhruv Parashar (B.Tech. 3nd year student)
 - Sudhanshu Gupta (B.Tech. 3nd year student)
 - Shivank Shekhar (B.Tech. 3nd year student)
 - Tanmay Eknath Patil (B.Tech. 3nd year student)
