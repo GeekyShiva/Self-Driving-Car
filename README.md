@@ -22,8 +22,8 @@
    
 # Team Project Volantè
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars0.githubusercontent.com/u/14253823?s=400&v=4" width="100px;"/><br/><sub>Shivank Shekhar</sub><br/><sub>Machine Learning and Computer Vision Developer</sub>](https://github.com/GeekyShiva)<br/>| [<img src="https://avatars1.githubusercontent.com/u/13279819?s=400&v=4" width="100px;"/><br/><sub>Sudhanshu Gupta</sub><br/><sub>Embedded Systems Developer</sub>](https://github.com/Sacusa)<br/> | [<img src="https://avatars1.githubusercontent.com/u/18151624?s=400&v=4" width="100px;"/><br/><sub>Dhruv Parashar</sub><br/><sub>Python and API Programmer</sub>](https://github.com/falcon1996)<brs/> | [<img src="https://avatars2.githubusercontent.com/u/22113810?s=400&v=4" width="100px;"/><br/><sub>Tanmay Eeknath Patil</sub><br/><sub>Android Developer</sub>](https://github.com/tanmay-e-patil)<br /> | [<img src="https://avatars3.githubusercontent.com/u/19656900?s=400&v=4" width="100px;"/><br/><sub>Yash Vaidya</sub><br/><sub>Hardware Designer</sub>](https://github.com/StrawHatDragon100)<br /> | 
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars0.githubusercontent.com/u/14253823?s=400&v=4" width="100px;"/><br/><sub>Shivank Shekhar](https://github.com/GeekyShiva)<br/>| [<img src="https://avatars1.githubusercontent.com/u/13279819?s=400&v=4" width="100px;"/><br/><sub>Sudhanshu Gupta</sub>](https://github.com/Sacusa)<br/> | [<img src="https://avatars1.githubusercontent.com/u/18151624?s=400&v=4" width="100px;"/><br/><sub>Dhruv Parashar</sub>](https://github.com/falcon1996)<brs/> | [<img src="https://avatars2.githubusercontent.com/u/22113810?s=400&v=4" width="100px;"/><br/><sub>Tanmay Eeknath Patil</sub>](https://github.com/tanmay-e-patil)<br /> | [<img src="https://avatars3.githubusercontent.com/u/19656900?s=400&v=4" width="100px;"/><br/><sub>Yash Vaidya</sub>](https://github.com/StrawHatDragon100)<br /> | 
+| :---: | :---: | :---: | :---: | :---: | 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
