@@ -88,7 +88,7 @@ Our project was squarely aimed at developing a simple RC self-driving car. This 
 
 The entire concept of self-driving cars is alien to the general Indian population. Not much research is being done in India right now on this. This car represents a small, albeit significant, step towards the development of a full-sized, fully-functional self-driving car. Ours is a scalable solution, i.e. with minor modifications, it can be scaled up to a full network of self-driving cars. Communication between such a network is a future research topic that can be looked into.
 
-Please refer this doc for extended reading on: [Novelty of Project Idea]()
+Please refer this doc for extended reading on: [Novelty of Project Idea](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Novelty%20of%20Project%20Idea.md)
 
 # References
 
@@ -118,7 +118,7 @@ This system consists of following components:
 * PiCam: collects visual data
 * Ultrasonic Sensor (HC - SR04): collects distance data
 
-Refer to our [Software Requirements Specification]() document which explains the following aspects about the project:
+Refer to our **[Software Requirements Specification](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/SRS.md)** document which explains the following aspects about the project:
 
 - Introductions
 - Functions
@@ -129,7 +129,7 @@ Refer to our [Software Requirements Specification]() document which explains the
 
 The document sheds a light over the above mentioned topics and gives the reader a prespective to know the project outline completely  
 
-To get a complete overview of the software design and principles used in the project please refer to **[Software Design Document]()**
+To get a complete overview of the software design and principles used in the project please refer to **[Software Design Document](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/SDS.md)**
 
 This document is divided into several sections (see Table of Contents) with intended readers being developers and software managers. Sections have, however, been written in a manner that it can be understood by anyone having some knowledge about software.
 
@@ -150,7 +150,7 @@ Please refer to the document given here, which gives readers details about what 
 - Android and Computer Vision
 - Cloud and Machine Learning
 
-**[Tools Used]()**
+**[Tools Used](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Tools.md)**
 
 # Sophistication of the Project 
 
@@ -160,7 +160,7 @@ We promised our customers that we will be building a prototype of a self driving
 
 According to whatever has been mentioned above, we have been successfully able to build our software, which meets all the requirements.
 
-To get the complete report refer our **[Sophistication Document]()** 
+To get the complete report refer our **[Sophistication Document](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Sophistication.md)** 
 
 # Project Prespective and Customer Base
 
