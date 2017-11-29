@@ -30,6 +30,27 @@
 # Self Driving Car
 This repository is for self driving car project developed by undergraduate *Computer Science and Engineering* students at *NIIT University*
 
+
+# Repository Design
+
+For a better reader experience here is the list how this repository is arranged:
+
+| Folder | Content | 
+| --- | --- |
+| [Android](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Android) | Contains All the adnroid app code and all the dependencies for Android app |  
+| [Arduino](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Arduino) | Contains all the Embedded code for running the vehicle remotely | 
+|[Code Metrics](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Code%20Metrics) | Contains all the documents related to code metrics and code quality | 
+| [File](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/File) | Contains extra files/supportive docs required for other documents|  
+| [Images](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Images) | Contains all the images/illustrations used across various documents   | 
+| [Machine Learning](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Machine%20Learning) | This folder contains all the AI/ML code for the project and the python dependencies for running the files. | 
+| [Project Docs](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Project%20Docs) | It contains all the important project related documents for the readers to view and study in order ot get a better understanding about this project |
+| [Raspberry Pi](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Raspberry%20Pi) | This folder contains all the code and files required ti run the micro-controller which is also the central node for this project | 
+| [Test Plan](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Test%20Plan) | It contains all the testing related documents and test cases which we used across various platforms of this project. |  
+| [LICENCE](https://inbox.google.com/u/0/) | Contains information about the open source licence for this project |
+| [README.md](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/README.md) | This file is the default red mode enabled file to get all the basic informations about the repository. You are currently reading **README.md** only (duh!) |  
+
+
+
 # Purpose
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
