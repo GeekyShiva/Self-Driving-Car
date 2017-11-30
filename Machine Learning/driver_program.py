@@ -31,57 +31,59 @@ global direction, degree
 
 
 def android_data():
-	#check loop for json files
+    # check loop for json files
 
-	for i in range(1, 10001):
+    for i in range(1, 10001):
 
-		try_check = 0
-			
-		recieve_json = urlopen("https://storage.googleapis.com/mytest1bucket/"+i+".json").read()		
+        try_check = 0
 
-		if(recieve_json):
-		
-			response = urlopen("https://storage.googleapis.com/mytest1bucket/"+i+".json").read().decode('utf8')
-			obj = json.loads(response)
+        recieve_json = urlopen(
+            "https://storage.googleapis.com/mytest1bucket/" + str(i) + ".json").read()
 
-			for key,value in obj.items():
-				if (key == 'compass'):
-					degree = value
-				else:
-					direction = value
+        if(recieve_json):
 
-		else:
-			if(try_check<5):
-				
-				try_check += 1
-				time.sleep(0.1)
+            response = urlopen(
+                "https://storage.googleapis.com/mytest1bucket/" + str(i) + ".json").read().decode('utf8')
+            obj = json.loads(response)
 
-			else:
-				sys.exit(0)
+            for key, value in obj.items():
+                if (key == 'compass'):
+                    degree = value
+                else:
+                    direction = value
+
+        else:
+            if(try_check < 5):
+
+                try_check += 1
+                time.sleep(0.1)
+
+            else:
+                sys.exit(0)
 
 
 def road_detected(status, signal):
 
-	if(status is True and signal is 'red'):
+    if(status is True and signal is 'red'):
 
-		set_turn(direction, degree)
-		set_speed(direction, 0)
+        set_turn(direction, degree)
+        set_speed(direction, 0)
 
-	else if(status is True and signal is 'yellow'):
-	
-		set_turn(direction, degree)
-		set_speed(direction, 1)
+    elif(status is True and signal is 'yellow'):
 
-	else if(status is True and signal is 'green'):
+        set_turn(direction, degree)
+        set_speed(direction, 1)
 
-		init()		
-		set_turn(direction, degree)
-		set_speed(direction, 3)
-				
-	else if(status is False):
+    elif(status is True and signal is 'green'):
 
-		set_turn(direction, degree)
-		set_speed(direction, 0)
+        init()
+        set_turn(direction, degree)
+        set_speed(direction, 3)
+
+    elif(status is False):
+
+        set_turn(direction, degree)
+        set_speed(direction, 0)
 
 
 # [START def_detect_labels]
@@ -107,7 +109,6 @@ def detect_labels(path):
 
 # [START def_detect_labels_uri]
 def detect_labels_uri(uri):
-
     """Detects labels in the file located in Google Cloud Storage/Firebase or on the
     Web."""
 
@@ -117,58 +118,59 @@ def detect_labels_uri(uri):
 
     response = client.label_detection(image=image)
     labels = response.label_annotations
-    #print('Labels:')
+    # print('Labels:')
 
     for label in labels:
-	#check loop/if condition for basic attributes	
-	
+        # check loop/if condition for basic attributes
         print(label.description)
-	if(label.description == 'road' or label.description == 'lane' or label.description == 'highway' or label.description == 'asphalt' or label.description == 'road trip' or label.description == 'infrastructure' or label.description == 'road surface'):
 
-		for label in labels:
+        if(label.description == 'road' or label.description == 'lane' or label.description == 'highway' or label.description == 'asphalt' or label.description == 'road trip' or label.description == 'infrastructure' or label.description == 'road surface'):
 
-			if(label.description == 'stop' or label.description == 'stop sign' or label.description == 'red' or label.description =='stop signage'):
-				road_detected(True, 'red')
+            for label in labels:
 
-			else if(label.description == 'yellow' or label.description == 'lighting' or label.description == 'orange'):
-				road_detected(True, 'yellow')
+                if(label.description == 'stop' or label.description == 'stop sign' or label.description == 'red' or label.description == 'stop signage'):
+                    road_detected(True, 'red')
 
-			else if(label.description == 'green' or label.description == 'green signal'):
-				road_detected(True, 'green')
+                elif(label.description == 'yellow' or label.description == 'lighting' or label.description == 'orange'):
+                    road_detected(True, 'yellow')
 
-			else:
-				road_detected(True, 'green')	
-	else:
-		road_detected(False, 'false')
+                elif(label.description == 'green' or label.description == 'green signal'):
+                    road_detected(True, 'green')
 
-		
+                else:
+                    road_detected(True, 'green')
+        else:
+            road_detected(False, 'false')
 
 
 # [END def_detect_labels_uri]
 
 
-
-#loop for multiple images
+# loop for multiple images
 
 def image_data():
 
-	for i in range(1, 10001):
-		try_check = 0
+    for i in range(1, 10001):
+        try_check = 0
 
-		image_url = 'https://storage.googleapis.com/self-driving-car/'+i+'.jpg'
+        image_url = 'https://storage.googleapis.com/self-driving-car/' + \
+            str(i) + '.jpg'
 
-		if(image_url):
-			detect_labels_uri(image_url)
+        if(image_url):
+            detect_labels_uri(image_url)
 
-		else:
+        else:
 
-			if(try_check<5):
-				
-				try_check += 1
-				time.sleep(0.1)    
+            if(not image_url and try_check < 5):
 
-			else:
-				sys.exit(0)
+                try_check += 1
+                time.sleep(0.1)
+
+            elif(image_url and try_check < 5):
+                detect_labels_uri(image_url)
+
+            else:
+                sys.exit(0)
 
 
 android_data()
