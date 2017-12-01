@@ -97,7 +97,7 @@ The design has been made clear using class diagrams and sequence diagrams.
 
 # 2. Conceptual Architecture
 
-![Architecture Diagram](Images/architecture-diagram.jpg?raw=true)
+![Architecture Diagram](../Images/architecture-diagram.jpg?raw=true)
 
 ## 2.1 Overview of modules and components
 
@@ -137,7 +137,7 @@ The design has been made clear using class diagrams and sequence diagrams.
 
 The structure and hierarchy of the system can be understood from the following structural diagram.
 
-![Structural Diagram](Images/structure.jpg?raw=true)
+![Structural Diagram](../Images/structure.jpg?raw=true)
 
 
 # 3. Logical Architecture
