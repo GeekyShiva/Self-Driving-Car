@@ -144,13 +144,13 @@ The structure and hierarchy of the system can be understood from the following s
 
 # Class Diagram 
 
-![Class Diagram](Images/class%20diagram.jpg?raw=true)
+![Class Diagram](../Images/class%20diagram.jpg?raw=true)
 
 # Sequence Diagram
-![Design Diagram](Images/designdoc.jpg?raw=true)
+![Design Diagram](../Images/designdoc.jpg?raw=true)
 
 ## 3.1 Component: Phone
-![Phone](Images/phone.PNG?raw=true)
+![Phone](../Images/phone.PNG?raw=true)
 
 Description: This component as a whole handles functionality related to sending image frames and direction to Google Cloud Storage.
 
@@ -196,7 +196,7 @@ Description: This class stores data like current location, compass heading. It t
 | + setDiffHeading(d : float) : void | d : amount the car has to turn   | - | A method to store the amount of turning that the car has to do |
 
 ## 3.2 Component:  Arduino
-![Arduino](Images/arduino.PNG?raw=true)
+![Arduino](../Images/arduino.PNG?raw=true)
 
 Description: This component as a whole handles functionality related to movement of car.
 
@@ -216,7 +216,7 @@ Description: This class accepts motion information from Raspberry Pi.
 | + writeTurnData(direction : unsigned int, percent : unsigned int) | direction: Direction of the car's turn. <br /> percent: Degree of the car's turn in percentage terms. | - | Configures the turn motors to turn in 'percent' percentage in 'direction' direction. |
 
 ## 3.3 Component: Google Cloud Platform
-![GCP](Images/GCP.PNG?raw=true)
+![GCP](../Images/GCP.PNG?raw=true)
 
 Description: This component takes images and JSON from Android 
 
@@ -233,7 +233,7 @@ Description: All the ML functionalities and detections like image detection, tex
 
 
 ## 3.4 Component: Raspberry Pi
-![Pi](Images/RaspberryPi.PNG?raw=true)
+![Pi](../Images/RaspberryPi.PNG?raw=true)
 
 Description: This component acts as a bridge between ML functions and basic driving functionality of the car. It helps to transfer high level abstraction to machine code. 
 
