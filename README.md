@@ -1,45 +1,57 @@
-**** This file yet to be updated soon please refer SRS.md meanwhile ****
 
 <div align=center>
-  <h1>Ford Motors Self-Driving Car</h1>
+  <h1>Self-Driving Car</h1>
   <h2>Project Volantè</h2>
   <b> Self Driving Car </b><br />
   <b> Version <i>1.0</i></b>
 </div><br /><br />
 
 
-##### Product : Project Volantè [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+##### Product : Project Volantè ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 ##### Description : Self driving RC Car Project
-##### Status : Waiting for Review
-##### Development Status  : design and developement phase
+##### Status : Waiting for Review by customer
+##### Development Status  : Development Completed
 
 ----
 
 #### Product
   - Current Version : 1.0
-  - Current Status : Work in Progress
-  - Date : 03-10-2017
+  - Current Status : Development Completed
+  - Date : 29-11-2017
    
    
-#### Team Project Volantè
-
-- **Dhruv Parashar**  U101115FCS082
-- **Shivang Shekhar**  U101115FCS148
-- **Sudhanshu Gupta**  U101115FCS160
-- **Yash Deepak Vaidya**  U101115FCS182
-- **Tanmay Ekanath Patil**  U101115FCS164
+# Team Project Volantè
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars0.githubusercontent.com/u/14253823?s=400&v=4" width="100px;"/><br/><sub>Shivank Shekhar](https://github.com/GeekyShiva)<br/>| [<img src="https://avatars1.githubusercontent.com/u/13279819?s=400&v=4" width="100px;"/><br/><sub>Sudhanshu Gupta</sub>](https://github.com/Sacusa)<br/> | [<img src="https://avatars1.githubusercontent.com/u/18151624?s=400&v=4" width="100px;"/><br/><sub>Dhruv Parashar</sub>](https://github.com/falcon1996)<brs/> | [<img src="https://avatars2.githubusercontent.com/u/22113810?s=400&v=4" width="100px;"/><br/><sub>Tanmay Eeknath Patil</sub>](https://github.com/tanmay-e-patil)<br /> | [<img src="https://avatars3.githubusercontent.com/u/19656900?s=400&v=4" width="100px;"/><br/><sub>Yash Vaidya</sub>](https://github.com/StrawHatDragon100)<br /> | 
+| :---: | :---: | :---: | :---: | :---: | 
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
-
-# FordMotors-SelfDrivingCar
-This repository is for self driving car project for Ford Motors India.
-
----------------------------------------- Read our project below -------------------------------------------------------------
+# Self Driving Car
+This repository is for self driving car project developed by undergraduate *Computer Science and Engineering* students at *NIIT University*
 
 
-# 1. Introduction
+# Repository Design
 
-## 1.1 Purpose
+For a better reader experience here is the list how this repository is arranged:
+
+| Folder | Content | 
+| --- | --- |
+| [Android](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Android) | Contains All the adnroid app code and all the dependencies for Android app |  
+| [Arduino](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Arduino) | Contains all the Embedded code for running the vehicle remotely | 
+|[Code Metrics](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Code%20Metrics) | Contains all the documents related to code metrics and code quality | 
+| [File](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/File) | Contains extra files/supportive docs required for other documents|  
+| [Images](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Images) | Contains all the images/illustrations used across various documents   | 
+| [Machine Learning](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Machine%20Learning) | This folder contains all the AI/ML code for the project and the python dependencies for running the files. | 
+| [Project Docs](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Project%20Docs) | It contains all the important project related documents for the readers to view and study in order ot get a better understanding about this project |
+| [Raspberry Pi](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Raspberry%20Pi) | This folder contains all the code and files required ti run the micro-controller which is also the central node for this project | 
+| [Test Plan](https://github.com/GeekyShiva/Self-Driving-Car/tree/master/Test%20Plan) | It contains all the testing related documents and test cases which we used across various platforms of this project. |  
+| [LICENCE](https://inbox.google.com/u/0/) | Contains information about the open source licence for this project |
+| [README.md](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/README.md) | This file is the default red mode enabled file to get all the basic informations about the repository. You are currently reading **README.md** only (duh!) |  
+
+
+
+# Purpose
 
 The purpose of this document is to provide a debriefed view of requirements and specifications of the project called `Volante`.
 
@@ -58,25 +70,25 @@ The hardware used in this project and described in this document are:
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
 * PiCamera used for capturing objects in front of the car
 
-## 1.2 Document Conventions
+# Document Conventions
 
 * All terms are in _italics_ style.
 * Main features or important terms are in *bold*.
 * TBD means "To be Decided". These are the components that are not yet decided.
 * For more references see Terminology.
 
-## 1.3 Intended Audience and Reading Suggestions
-
-Anyone with some programming experience, with familiarity in Python and C, can understand this document. The document is intended for developers, software architects, testers, project managers and documentation writers.
-
-This Software Requirement Specification also includes:
+This document also includes:
 
 * Overall description of the product
 * External interface requirements
 * System Features
 * Other nonfunctional requirements
 
-## 1.4 Product Scope
+# Intended Audience and Reading Suggestions
+
+Anyone with some programming experience, with familiarity in *Python* and *C*, can understand this document. The document is intended for developers, software architects, testers, project managers and documentation writers, auto enthusiast and AI/ML developers.
+
+# Product Scope
 
 Road safety has been an issue for as long as cars have been in existence. Over *1.3* million people die of road accidents every year across the globe, most of which are preventable. Ever-rising road traffic has led to an exponential increase in commute time. This has a direct impact not only on people's productivity but also on the environment.
 
@@ -91,12 +103,20 @@ Recent developments in machine learning and artificial intelligence along with t
 * Better traffic discipline: Better law enforcement can be achieved and traffic can be managed by capping speed in various regions.
 * Potential for a new design: Because a vehicle may eventually function as a self-guided train car, the potential for new car designs is huge. With no need for complicated driving tools, self-driving cars could include new ways to relax or to stay entertained.
 
-## 1.5 References
+# Novelty of the Project
+
+Our project was squarely aimed at developing a simple RC self-driving car. This involved developing code for a cloud-based machine learning solution, an Android application for data collection and an embedded system to actuate the car's motors. This project, thus, represents a complete self-driving car solution, instead of forming a part of a complete system.
+
+The entire concept of self-driving cars is alien to the general Indian population. Not much research is being done in India right now on this. This car represents a small, albeit significant, step towards the development of a full-sized, fully-functional self-driving car. Ours is a scalable solution, i.e. with minor modifications, it can be scaled up to a full network of self-driving cars. Communication between such a network is a future research topic that can be looked into.
+
+Please refer this doc for extended reading on: [Novelty of Project Idea](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Novelty%20of%20Project%20Idea.md)
+
+# References
 
 * This document is written in GitHub flavored Markdown.
 * IEEE Standard 830-1998 Recommended Practice for Software Requirements Specifications.
 
-## 1.6 Terminology
+# Terminology and Conventions 
 
 | Term | Description |
 | --- | --- |
@@ -109,9 +129,8 @@ Recent developments in machine learning and artificial intelligence along with t
 | Tags | A label attached to track which gives extra information about it. |
 | GCP | Google Cloud Platform for running the machine learning algorithm |
 
-# 2. Overall Description
 
-## 2.1 Product Perspective
+## Product
 This system consists of following components:
 
 * RC Car: analogous to real-world car and tries to mimic it
@@ -120,11 +139,85 @@ This system consists of following components:
 * PiCam: collects visual data
 * Ultrasonic Sensor (HC - SR04): collects distance data
 
-**RC Car** acts as an analog to the real world car with basic motion capabilities. It is battery operated.
+Refer to our **[Software Requirements Specification](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/SRS.md)** document which explains the following aspects about the project:
 
-The **Machine Learning Model** guides the car in the environment based on the data set on which it is trained. The model uses neural networks as the underlying learning framework.
+- Introductions
+- Functions
+- Dependencies
+- External Interface Requirement
+- System Features
+- Non-functional Requirements
 
-**Arduino Uno** controls the actual car’s hardware. It runs the car’s motors and collects distance from the HC-SR04 ultrasonic sensor. This data is then sent to the Raspberry Pi for processing.
+The document sheds a light over the above mentioned topics and gives the reader a prespective to know the project outline completely  
 
-**Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
+To get a complete overview of the software design and principles used in the project please refer to **[Software Design Document](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/SDS.md)**
 
+This document is divided into several sections (see Table of Contents) with intended readers being developers and software managers. Sections have, however, been written in a manner that it can be understood by anyone having some knowledge about software.
+
+This Software Design Specification also includes:
+
+* System architecture description
+* Detailed description of components
+* Reuse and relationships to other products
+* Design decisions and tradeoffs
+
+The design has been made clear using class diagrams and sequence diagrams.
+
+# Tools Used 
+
+Please refer to the document given here, which gives readers details about what are the major tools required to build this project under various catagories like 
+
+- Embedded Systems
+- Android and Computer Vision
+- Cloud and Machine Learning
+
+**[Tools Used](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Tools.md)**
+
+# Sophistication of the Project 
+
+Here, we are going to discuss what all parameters we have considered while building our product and how many parameters we have been able to cover actually. 
+
+We promised our customers that we will be building a prototype of a self driving car which can be scaled for production.
+
+According to whatever has been mentioned above, we have been successfully able to build our software, which meets all the requirements.
+
+To get the complete report refer our **[Sophistication Document](https://github.com/GeekyShiva/Self-Driving-Car/blob/master/Project%20Docs/Sophistication.md)** 
+
+# Project Prespective and Customer Base
+
+We have also compiled a report which tells the readers about the prespective of this project and the customer base and UX that one should target while developing such projects.
+
+Technology is bringing us tools and solutions that will help make businesses more productive, save them money,
+make them money, and, perhaps most importantly, positively impact the customer experience. And, this is just 
+the beginning. What used to be something we would only see in the movies is becoming our reality. We are living
+in the future
+
+# Screenshot of the Apps
+
+Here is the screenshot of the navigation app that we have built
+
+![Screenshot](Images/car/screenshot.jpg)
+
+It depicts the start and the end point for the navigation of the vehicle.
+
+Here is the app that we have built
+
+![icon](Images/car/icon.jpg)
+
+
+# Images of the Actual Model
+
+Here are some images of the model that we have developed.
+
+![Image 1](Images/car/imgcar1.jpg)
+
+![Image 2](Images/car/imgcar2.jpg)
+
+![Image 3](Images/car/imgcar3.jpg)
+
+![Image 4](Images/car/imgcar4.jpg)
+
+
+# Working Video
+
+Visit this link for the working Video of the project : [Link](https://photos.app.goo.gl/hweut41adSm97WLc2)
