@@ -38,33 +38,53 @@ def android_data():
         try_check = 0
 
         recieve_json = urlopen(
-            "https://storage.googleapis.com/mytest1bucket/" + str(i) + ".json").read()
+            
+            "https://storage.googleapis.com/pokjb-186519.appspot.com/jsons/" + str(i) + ".json").read()
 
         if(recieve_json):
 
             response = urlopen(
-                "https://storage.googleapis.com/mytest1bucket/" + str(i) + ".json").read().decode('utf8')
+                "https://storage.googleapis.com/pokjb-186519.appspot.com/jsons/" + str(i) + ".json").read().decode('utf8')
             obj = json.loads(response)
 
             for key, value in obj.items():
                 if (key == 'compass'):
-                    degree = value
+                    if(value<5):
+                        degree = 0
+                    elif(5<value<10):
+                        degree = 1
+                    elif(10<value<20):
+                        degree = 2
+                    elif(value>20):
+                        degree = 3
                 else:
                     direction = value
 
         else:
-            if(try_check < 5):
-
+            if(not recieve_json and try_check < 5):
                 try_check += 1
                 time.sleep(0.1)
+
+            elif(recieve_json and try_check < 5):
+                android_data()
 
             else:
                 sys.exit(0)
 
 
-def road_detected(status, signal):
+def road_detected(status, signal, obstacle):
 
-    if(status is True and signal is 'red'):
+    if(obstacle is 1):
+        set_turn("Left", 3)
+        set_speed("Left", 3)
+        time.sleep(1)
+        set_turn("Right", 3)
+        set_speed("Right", 3)
+        time.sleep(1)
+        set_turn(direction, degree)
+        set_speed(direction, 3)
+
+    elif(status is True and signal is 'red'):
 
         set_turn(direction, degree)
         set_speed(direction, 0)
@@ -124,23 +144,26 @@ def detect_labels_uri(uri):
         # check loop/if condition for basic attributes
         print(label.description)
 
-        if(label.description == 'road' or label.description == 'lane' or label.description == 'highway' or label.description == 'asphalt' or label.description == 'road trip' or label.description == 'infrastructure' or label.description == 'road surface'):
+        if(label.description == 'road' or label.description == 'lane' or label.description == 'highway' or label.description == 'asphalt' or label.description == 'road trip' or label.description == 'infrastructure' or label.description == 'road surface' or label.description == 'field' or label.description == 'floor' or label.description == 'flooring'):
 
             for label in labels:
 
                 if(label.description == 'stop' or label.description == 'stop sign' or label.description == 'red' or label.description == 'stop signage'):
-                    road_detected(True, 'red')
+                    road_detected(True, 'red', 0)
 
                 elif(label.description == 'yellow' or label.description == 'lighting' or label.description == 'orange'):
-                    road_detected(True, 'yellow')
+                    road_detected(True, 'yellow', 0)
 
                 elif(label.description == 'green' or label.description == 'green signal'):
-                    road_detected(True, 'green')
+                    road_detected(True, 'green', 0)
+                
+                elif(label.description == 'plastic' or label.description == 'product'):
+                    road_detected(True, 'green', 1)
 
                 else:
-                    road_detected(True, 'green')
+                    road_detected(True, 'green', 0)
         else:
-            road_detected(False, 'false')
+            road_detected(False, 'false', 0)
 
 
 # [END def_detect_labels_uri]
@@ -153,7 +176,7 @@ def image_data():
     for i in range(1, 10001):
         try_check = 0
 
-        image_url = 'https://storage.googleapis.com/self-driving-car/' + \
+        image_url = 'https://storage.googleapis.com/pokjb-186519.appspot.com/images/' + \
             str(i) + '.jpg'
 
         if(image_url):
