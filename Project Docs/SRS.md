@@ -28,7 +28,7 @@
 - **Yash Deepak Vaidya**  U101115FCS182
 - **Tanmay Ekanath Patil**  U101115FCS164
 
-**Some of the software design functions and precedures have changed across developement process and will soon be updates here**
+**Some of the software design functions and procedures have changed across developement process and will soon be updates here**
 
 
 # 1. Introduction
