@@ -50,7 +50,7 @@ The hardware used in this project and described in this document are:
 * Arduino Uno used for controlling the car speed and turning radius
 * Ultrasonic sensors to detect objects in front of the car
 * Raspberry Pi used for capturing and transmission of camera data and communicating with Google Cloud Platform
-* PiCamera used for capturing objects in front of the car
+* Android App used for capturing objects in front of the car
 
 ## 1.2 Document Conventions
 
