@@ -17,7 +17,7 @@
 #### Product
   - Current Version : 1.0
   - Current Status : Work in Progress
-  - Date : 03-10-2017
+  - Date : 02-12-2017
    
    
 #### Team Project Volantè
@@ -27,6 +27,9 @@
 - **Sudhanshu Gupta**  U101115FCS160
 - **Yash Deepak Vaidya**  U101115FCS182
 - **Tanmay Ekanath Patil**  U101115FCS164
+
+**Some of the software design functions and precedures have changed across developement process and will soon be updates here**
+
 
 # 1. Introduction
 
@@ -118,7 +121,9 @@ The **Machine Learning Model** guides the car in the environment based on the da
 
 **Arduino Uno** controls the actual car’s hardware. It runs the car’s motors and collects distance from the HC-SR04 ultrasonic sensor. This data is then sent to the Raspberry Pi for processing.
 
-**Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself, Raspberry Pi processes visual data collected using PiCam, transferring it to GCP server for classification.
+**Raspberry Pi** act as interfaces between the Arduino and GCP. While Arduino controls the motion of the car itself,Pi performs the driving descisions transferring it from GCP server after classification to Arduino
+
+**Android** acts as a data collector program using cloud storage capabilities to store data in the form of images fro classification.
 
 ### Component Diagram
 
